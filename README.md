@@ -36,6 +36,6 @@ Before you dive into regression, algorithms and testing talk to your partner/tea
 
 <u> Test your predictions: </u>
 
-* Use cross validation and k-fold means to test for overfitting
+* Use cross validation and k-fold to test for overfitting
 
 Good Luck!
