@@ -46,5 +46,6 @@ Math description: Regularization adds a random variable (for L1, a Laplacian) to
 * [Difference between L1 and L2](http://www.quora.com/Machine-Learning/What-is-the-difference-between-L1-and-L2-regularization), Aleks Jakulins answer. 
 * [Matrix for of regression models](http://global.oup.com/booksites/content/0199268010/samplesec3)
 * [The statistics bible](http://statweb.stanford.edu/~tibs/ElemStatLearn/printings/ESLII_print10.pdf), chapter 3
-
+* [stats.stackexchange: Ridge vs. LASSO](http://stats.stackexchange.com/questions/866/when-should-i-use-lasso-vs-ridge)
+* [MetaOptimize: L1 vs. L2](http://metaoptimize.com/qa/questions/5205/when-to-use-l1-regularization-and-when-l2)
 
