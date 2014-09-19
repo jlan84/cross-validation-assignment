@@ -16,8 +16,8 @@ test dataset to measure your success.
 You should generally keep 10-25% of the data for the test set and use the rest
 for training.
 
-You should always randomly split your data. Data often is sorted in some way (
-by date or even by the value you are trying to predict). *Never* just split your
+You should always randomly split your data. Data often is sorted in some way
+(by date or even by the value you are trying to predict). *Never* just split your
 data into the first 90% and the remaining 10%. Lucky for us, there is a nice
 method implemented in scipy that splits the dataset randomly for us called
 [test_train_split](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.train_test_split.html).
