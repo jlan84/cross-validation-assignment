@@ -136,9 +136,7 @@ X_train, X_test, y_train, y_test = train_test_split(X_new, y, test_size=0.15)
 # Run Linear Regression (the same as above)
 regr = LinearRegression()
 regr.fit(X_train, y_train)
-print "Intercept:", regr.intercept_
-print "Coefficients:", regr.coef_
-print "R^2 error:", regr.score(X_test, y_test)
+r2error = regr.score(X_test, y_test)
 predicted_y = regr.predict(X_test)
 ```
 
