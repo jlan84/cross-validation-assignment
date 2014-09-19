@@ -111,7 +111,7 @@ We can just add a new feature to our feature matrix by computing `x^2`:
 
 Now you can do linear regression with these features. If there's a linear relationship between `x^2` and `y` that means there's a quadratic relationship between `x` and `y`.
 
-If you have more than one feature, you need to do all the combinations. If you start with two features, `x` and `z`, to do the order 2 polynomial, you will need to add these features: `x^2`, `z^2`, `xz`.
+If you have more than one feature, you need to do all the combinations. If you start with two features, `x` and `z`, to do the order 2 polynomial, you will need to add these features: `x^2`, `z^2`, `xz`. To do an order 3 polynomial, you need to add those 3 features along with these degree 3 features: `x^3`, `z^3`, `x^2z`, `xz^2`.
 
 In `sklearn`, you should use `PolynomialFeatures` for generating these additional features ([documentation](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html#sklearn.preprocessing.PolynomialFeatures)). Here's how you would modify the above example to include polynomial features up to degree 3:
 
