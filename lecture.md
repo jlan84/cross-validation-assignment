@@ -659,12 +659,7 @@ while when a model is overfit, the reverse is true.
 One can show that the MSE decomposes into a sum of the bias (squared) and
 variance of the estimator:
 
-$$\begin{aligned}
-\text{Var}(\hat{\theta}) &= E[\hat{\theta} - \theta]^2 - (E[\hat{\theta} -
-\theta])^2 \\
-\Rightarrow E[\hat{\theta} - \theta]^2 &= \text{Var}(\hat{\theta}) +
-\text{Bias}(\hat{\theta})^2
-\end{aligned}$$
+<a href="http://www.codecogs.com/eqnedit.php?latex=$$\begin{aligned}&space;\text{Var}(\hat{\theta})&space;&=&space;E[\hat{\theta}&space;-&space;\theta]^2&space;-&space;(E[\hat{\theta}&space;-&space;\theta])^2&space;\&space;\Rightarrow&space;E[\hat{\theta}&space;-&space;\theta]^2&space;&=&space;\text{Var}(\hat{\theta})&space;&plus;&space;\text{Bias}(\hat{\theta})^2&space;\end{aligned}$$" target="_blank"><img src="http://latex.codecogs.com/gif.latex?$$\begin{aligned}&space;\text{Var}(\hat{\theta})&space;&=&space;E[\hat{\theta}&space;-&space;\theta]^2&space;-&space;(E[\hat{\theta}&space;-&space;\theta])^2&space;\&space;\Rightarrow&space;E[\hat{\theta}&space;-&space;\theta]^2&space;&=&space;\text{Var}(\hat{\theta})&space;&plus;&space;\text{Bias}(\hat{\theta})^2&space;\end{aligned}$$" title="$$\begin{aligned} \text{Var}(\hat{\theta}) &= E[\hat{\theta} - \theta]^2 - (E[\hat{\theta} - \theta])^2 \ \Rightarrow E[\hat{\theta} - \theta]^2 &= \text{Var}(\hat{\theta}) + \text{Bias}(\hat{\theta})^2 \end{aligned}$$" /></a>
 
 The training error, on the other hand, does not have this tradeoff; it will
 always decrease (or at least, never increase) as variables (polynomial terms)
@@ -750,7 +745,7 @@ plot_learning_curve(5)
 ![png](lecture_files/lecture_45_0.png)
 
 
-For $d=5$, it's converged, but to a better value than for $d=3$.
+For `d=5`, it's converged, but to a better value than for `d=3`.
 
 Thus you can **bring the two curves closer together** by adding more points, but
 you can **bring the convergence level down** only by adding complexity to the
@@ -831,13 +826,6 @@ ax.plot(degrees, k_fold_err, lw=2)
 ax.set_xlabel('degree of fit')
 ax.set_ylabel('average rms error')
 ```
-
-
-
-
-    <matplotlib.text.Text at 0x113ac1e10>
-
-
 
 
 ![png](lecture_files/lecture_49_1.png)
