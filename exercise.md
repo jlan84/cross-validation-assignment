@@ -63,7 +63,8 @@ able) for regression as well.  This dataset is actually containe in scikit-
 learn's built in datasets.
 
 
-### Exercise 
+### Exercise:
+ 
 1. Create a new linear regression model and fit it using the dataset.
 2. Compute the RMSE on the training data.
 3. Examine the coefficients return from your model.  Maybe make a plot of these.
@@ -85,7 +86,8 @@ waste too much data, which is an advantage over having a fixed test subset.
 
 
 
-### Exercise
+### Exercise:
+
 1. Repeat the above but this time use K-fold cross validation.
 2. Compare the RMSE for your hold-out set and K-fold cross validation.
 3. Plot the learning curve for a standard ordinary least squares regression (You might want to use: [cross_val_score](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.cross_val_score.html) and [ShuffleSplit](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.ShuffleSplit.html)).
@@ -98,7 +100,8 @@ waste too much data, which is an advantage over having a fixed test subset.
 
 
 
-### Exercise: 
+### Exercise:
+ 
 1. Now that you have experimented with linear regression we will begin exploring Ridge Regression.
 2. Fit the same dataset but with a Ridge Regression with an `alpha = 0.5` to start
 
@@ -147,7 +150,8 @@ this parameter via cross-validation.
 
 
 
-### Exercise
+### Exercise:
+
 1. Plot the parameters (coefficients) of the Ridge regression (y-axis) versus the value of the alpha parameter. (There will be as many lines as there are parameters)
 
 ```python
@@ -169,6 +173,7 @@ for param in params.T:
 
 
 ### Exercise: 
+
 1. Plot the learning curve of the Ridge regression with different alpha parameters
 2. Plot the learning curves of the Ridge Regression and Ordinary Least Squares Regression.  Compare these two.
 
@@ -193,7 +198,8 @@ Note that this is *equivalent* to a Bayesian model <img src="http://latex.codeco
 
 Note how the Lasso imposes sparseness on the parameter coefficients:
 
-### Exercise
+### Exercise:
+
  1. Make a plot of the training error and the testing error as a function of the alpha parameter.
  2. Plot the parameters (coefficients) of the LASSO regression (y-axis) versus the value of the alpha parameter. 
  3. Plot the learning curves of the Lasso Regression and Ordinary Least Squares Regression.  Compare these two.
