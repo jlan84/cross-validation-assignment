@@ -1,7 +1,7 @@
 
 ## Regression Regularization
 
-For this exercise you will be comparing Ridge Regression and LASSO regression to
+For this Exercise you will be comparing Ridge Regression and LASSO regression to
 Ordinary Least Squares.  You will also get experience with techniques of cross
 validation.  We will be using [scikit-learn](http://scikit-
 learn.org/stable/supervised_learning.html#supervised-learning) to fit our
@@ -56,39 +56,20 @@ print X[:2]
 ### Dataset
 
 We will be using a [dataset](http://archive.ics.uci.edu/ml/datasets/Housing)
-from the UCI machine learning Repository for this exercise.  Feel free to play
+from the UCI machine learning Repository for this Exercise.  Feel free to play
 around with any of the others that are [suited](http://archive.ics.uci.edu/ml/da
 tasets.html?format=&task=reg&att=&area=&numAtt=&numIns=&type=&sort=nameUp&view=t
 able) for regression as well.  This dataset is actually containe in scikit-
 learn's built in datasets.
 
 
-```python
-# EXERCISE: Create a new linear regression model and fit it using the dataset
+### Exercise 
+1. Create a new linear regression model and fit it using the dataset.
+2. Compute the RMSE on the training data.
+3. Examine the coefficients return from your model.  Maybe make a plot of these.
+4. Split your data into a training and test set (hold-out set) and compute the fit on only the training data. Test the RMSE of your results on the test data.
+5. Experiment around with the ratio of these (i.e. 70%/30% train/test, 80%/20% train/test, etc.)
 
-# Create linear regression object
-linear = LinearRegression()
-
-# TODO: Fit the data
-```
-
-
-```python
-# EXERCISE: Compute the RMSE on the training data
-```
-
-
-```python
-# EXERCISE: Examine the coefficients return from your model.  Maybe make a plot of these.
-```
-
-
-```python
-# EXERCISE: Split your data into a training and test set (hold-out set).
-
-# Play around with the ratio of these (i.e. 70%/30% train/test, 80%/20% train/test, etc.)
-# and compute the fit on only the training data. Test the RMSE of your results on the test data.
-```
 
 ## K-fold Cross-validation
 
@@ -103,46 +84,24 @@ computed values. This approach can be computationally expensive, but does not
 waste too much data, which is an advantage over having a fixed test subset.
 
 
-```python
-# EXERCISE: Repeat the above but this time use K-fold cross validation.
-```
 
+### Exercise
+1. Repeat the above but this time use K-fold cross validation.
+2. Compare the RMSE for your hold-out set and K-fold cross validation.
+3. Plot the learning curve for a standard ordinary least squares regression (You might want to use: [cross_val_score](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.cross_val_score.html) and [ShuffleSplit](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.ShuffleSplit.html)).
+4. Complete Part 4 and the extra credit of the gradient descent sprint if you haven't already.
+5. Use K-Fold cross validation to evaluate your gradient descent model and compare to the performance of scikit learn
+6. Plot a learning curve and test vs train error curve.
 
-```python
-# EXERCISE: Compare the RMSE for your hold-out set and K-fold cross validation
-```
-
-
-```python
-# EXERCISE: Plot the learning curve for a standard ordinary least squares regression
-
-# You might want to use: http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.cross_val_score.html
-# and: http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.ShuffleSplit.html
-```
-
-
-```python
-# EXERCISE: Complete Part 4 and the extra credit of the gradient descent sprint if you haven't already
-```
-
-
-```python
-# EXERCISE: Use K-Fold cross validation to evaluate your gradient descent model and compare to the performance of scikit learn
-```
-
-
-```python
-# EXERCISE: Plot a learning curve and test vs train error curve.
-```
 
 ## Part 2: Regularization
 
 
-```python
-# EXERCISE: Now that you have experimented with linear regression we will begin exploring Ridge Regression
 
-# Fit the same dataset but with a Ridge Regression with an alpha == 0.5 to start
-```
+### Exercise: 
+1. Now that you have experimented with linear regression we will begin exploring Ridge Regression.
+2. Fit the same dataset but with a Ridge Regression with an `alpha = 0.5` to start
+
 
 Notice the linear regression is not defined for scenarios where the number of
 features/parameters exceeds the number of observations. It performs poorly as
@@ -154,43 +113,44 @@ model.
 The **ridge estimator** is a simple, computationally efficient regularization
 for linear regression.
 
-$$\hat{\beta}^{ridge} = \text{argmin}_{\beta}\left\{\sum_{i=1}^N (y_i - \beta_0
-- \sum_{j=1}^k x_{ij} \beta_j)^2 + \alpha \sum_{j=1}^k \beta_j^2 \right\}$$
+<img src="http://latex.codecogs.com/gif.latex?$$\hat{\beta}^{ridge}&space;=&space;\text{argmin}_{\beta}\left\{\sum_{i=1}^N&space;(y_i&space;-&space;\beta_0&space;-&space;\sum_{j=1}^k&space;x_{ij}&space;\beta_j)^2&space;&plus;&space;\alpha&space;\sum_{j=1}^k&space;\beta_j^2&space;\right\}$$" title="$$\hat{\beta}^{ridge} = \text{argmin}_{\beta}\left\{\sum_{i=1}^N (y_i - \beta_0 - \sum_{j=1}^k x_{ij} \beta_j)^2 + \alpha \sum_{j=1}^k \beta_j^2 \right\}$$" />
 
 Typically, we are not interested in shrinking the mean, and coefficients are
 standardized to have zero mean and unit L2 norm. Hence,
 
-$$\hat{\beta}^{ridge} = \text{argmin}_{\beta} \sum_{i=1}^N (y_i - \sum_{j=1}^k
-x_{ij} \beta_j)^2$$
+<img src="http://latex.codecogs.com/gif.latex?$$\hat{\beta}^{ridge}&space;=&space;\text{argmin}_{\beta}&space;\sum_{i=1}^N&space;(y_i&space;-&space;\sum_{j=1}^k&space;x_{ij}&space;\beta_j)^2$$" title="$$\hat{\beta}^{ridge} = \text{argmin}_{\beta} \sum_{i=1}^N (y_i - \sum_{j=1}^k x_{ij} \beta_j)^2$$" />
 
-$$\text{subject to } \sum_{j=1}^k \beta_j^2 < \alpha$$
+<img src="http://latex.codecogs.com/gif.latex?$$\text{subject&space;to&space;}&space;\sum_{j=1}^k&space;\beta_j^2&space;<&space;\alpha$$" title="$$\text{subject to } \sum_{j=1}^k \beta_j^2 < \alpha$$" />
 
-Note that this is *equivalent* to a Bayesian model $y \sim N(X\beta, I)$ with a
-Gaussian prior on the $\beta_j$:
+Note that this is *equivalent* to a Bayesian model <img src="http://latex.codecogs.com/gif.latex?$y&space;\sim&space;N(X\beta,&space;I)$" title="$y \sim N(X\beta, I)$" /> with a
+Gaussian prior on the <img src="http://latex.codecogs.com/gif.latex?$\beta_j$" title="$\beta_j$" />:
 
-$$\beta_j \sim \text{N}(0, \alpha)$$
+<img src="http://latex.codecogs.com/gif.latex?$$\beta_j&space;\sim&space;\text{N}(0,&space;\alpha)$$" title="$$\beta_j \sim \text{N}(0, \alpha)$$" />
 
 The estimator for the ridge regression model is:
 
-$$\hat{\beta}^{ridge} = (X'X + \alpha I)^{-1}X'y$$
+<img src="http://latex.codecogs.com/gif.latex?$$\hat{\beta}^{ridge}&space;=&space;(X'X&space;&plus;&space;\alpha&space;I)^{-1}X'y$$" title="$$\hat{\beta}^{ridge} = (X'X + \alpha I)^{-1}X'y$$" />
 
 
-```python
-# EXERCISE: Make a plot of the training error and the testing error as a function of the alpha paramter
-```
 
-The regularization of the ridge is a *shrinkage*: the coefficients learned are
-shrunk towards zero.
+### Exercise:
+ 
+ 1. Make a plot of the training error and the testing error as a function of the alpha parameter.
+
+#### Shrinkage
+
+The regularization of the ridge is a *shrinkage*: the coefficients learned are shrunk towards zero.
 
 The amount of regularization is set via the `alpha` parameter of the ridge,
 which is tunable. The `RidgeCV` method in `scikits-learn` automatically tunes
 this parameter via cross-validation.
 
 
-```python
-# EXERCISE: Plot the parameters (coefficients) of the Ridge regression (y-axis) versus the value of the alpha parameter.  
-# There will be as many lines as there are parameters.
 
+### Exercise
+1. Plot the parameters (coefficients) of the Ridge regression (y-axis) versus the value of the alpha parameter. (There will be as many lines as there are parameters)
+
+```python
 from sklearn import preprocessing
 
 k = X.shape[1]
@@ -208,54 +168,38 @@ for param in params.T:
 ```
 
 
-```python
-# EXERCISE: Plot the learning curve of the Ridge regression with different alpha parameters
-```
+### Exercise: 
+1. Plot the learning curve of the Ridge regression with different alpha parameters
+2. Plot the learning curves of the Ridge Regression and Ordinary Least Squares Regression.  Compare these two.
 
 
-```python
-# EXERCISE: Plot the learning curves of the Ridge Regression and Ordinary Least Squares Regression.  Compare these two.
-```
+
+
+## Lasso
 
 **The Lasso estimator** is useful to impose sparsity on the coefficients. In
 other words, it is to be prefered if we believe that many of the features are
 not relevant.
 
-$$\hat{\beta}^{lasso} = \text{argmin}_{\beta}\left\{\frac{1}{2}\sum_{i=1}^N (y_i
-- \beta_0 - \sum_{j=1}^k x_{ij} \beta_j)^2 + \lambda \sum_{j=1}^k |\beta_j|
-\right\}$$
-
+<img src="http://latex.codecogs.com/gif.latex?$$\hat{\beta}^{lasso}&space;=&space;\text{argmin}_{\beta}\left\{\frac{1}{2}\sum_{i=1}^N&space;(y_i&space;-&space;\beta_0&space;-&space;\sum_{j=1}^k&space;x_{ij}&space;\beta_j)^2&space;&plus;&space;\lambda&space;\sum_{j=1}^k&space;|\beta_j|&space;\right\}$$" title="$$\hat{\beta}^{lasso} = \text{argmin}_{\beta}\left\{\frac{1}{2}\sum_{i=1}^N (y_i - \beta_0 - \sum_{j=1}^k x_{ij} \beta_j)^2 + \lambda \sum_{j=1}^k |\beta_j| \right\}$$" />
 or, similarly:
 
-$$\hat{\beta}^{lasso} = \text{argmin}_{\beta} \frac{1}{2}\sum_{i=1}^N (y_i -
-\sum_{j=1}^k x_{ij} \beta_j)^2$$
-$$\text{subject to } \sum_{j=1}^k |\beta_j| < \lambda$$
+<img src="http://latex.codecogs.com/gif.latex?$$\hat{\beta}^{lasso}&space;=&space;\text{argmin}_{\beta}&space;\frac{1}{2}\sum_{i=1}^N&space;(y_i&space;-&space;\sum_{j=1}^k&space;x_{ij}&space;\beta_j)^2$$&space;$$\text{subject&space;to&space;}&space;\sum_{j=1}^k&space;|\beta_j|&space;<&space;\lambda$$" title="$$\hat{\beta}^{lasso} = \text{argmin}_{\beta} \frac{1}{2}\sum_{i=1}^N (y_i - \sum_{j=1}^k x_{ij} \beta_j)^2$$ $$\text{subject to } \sum_{j=1}^k |\beta_j| < \lambda$$" />
 
-Note that this is *equivalent* to a Bayesian model $y \sim N(X\beta, I)$ with a
-**Laplace** prior on the $\beta_j$:
+Note that this is *equivalent* to a Bayesian model <img src="http://latex.codecogs.com/gif.latex?$y&space;\sim&space;N(X\beta,&space;I)$" title="$y \sim N(X\beta, I)$" /> with a
+**Laplace** prior on the <img src="http://latex.codecogs.com/gif.latex?$\beta_j$" title="$\beta_j$" />:
 
-$$\beta_j \sim \text{Laplace}(\lambda) =
-\frac{\lambda}{2}\exp(-\lambda|\beta_j|)$$
+<img src="http://latex.codecogs.com/gif.latex?$$\beta_j&space;\sim&space;\text{Laplace}(\lambda)&space;=&space;\frac{\lambda}{2}\exp(-\lambda|\beta_j|)$$" title="$$\beta_j \sim \text{Laplace}(\lambda) = \frac{\lambda}{2}\exp(-\lambda|\beta_j|)$$" />
 
 Note how the Lasso imposes sparseness on the parameter coefficients:
 
-### Repeat the above steps with LASSO Regression
+### Exercise
+ 1. Make a plot of the training error and the testing error as a function of the alpha parameter.
+ 2. Plot the parameters (coefficients) of the LASSO regression (y-axis) versus the value of the alpha parameter. 
+ 3. Plot the learning curves of the Lasso Regression and Ordinary Least Squares Regression.  Compare these two.
 
 
 ```python
-# Make a plot of the training error and the testing error as a function of the alpha paramter
-```
-
-
-```python
-# EXERCISE: Plot the parameters (coefficients) of the LASSO regression (y-axis) versus the value of the alpha parameter.  
-# There will be as many lines as there are parameters.
-```
-
-
-```python
-# EXERCISE: Plot the learning curve of the LASSO regression with different alpha parameters
-
 k = X.shape[1]
 alphas = np.linspace(0.1, 3)
 params = np.zeros((len(alphas), k))
@@ -271,7 +215,7 @@ for param in params.T:
 ```
 
 
-```python
-# EXERCISE: Plot the learning curves of the Ridge Regression, LASSO Regression, and 
-# Ordinary Least Squares Regression.  Compare these all.
-```
+
+### Exercise: 
+1. Plot the learning curves of the Ridge Regression, LASSO Regression, and Ordinary Least Squares Regression.  Compare all three. 
+
