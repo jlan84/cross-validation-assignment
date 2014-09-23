@@ -3,7 +3,7 @@ regularized-regression
 
 Cross validation and regularized regression
 
-Sprint in [exercise.ipynb](exercise.ipynb)
+Sprint in [exercise.md](exercise.md)
 
 # Extra Credit: Kaggle Competition 
 
