@@ -55,7 +55,7 @@ print X[:2]
 
 We will be using a [dataset](http://archive.ics.uci.edu/ml/datasets/Housing)
 from the UCI machine learning Repository for this Exercise.  Feel free to play
-around with any of the others that are [suited](http://archive.ics.uci.edu/ml/datasets.html) for regression as well.  This dataset is actually containe in scikit-
+around with any of the others that are [suited](http://archive.ics.uci.edu/ml/datasets.html?format=&task=reg&att=&area=&numAtt=&numIns=&type=&sort=nameUp&view=table) for regression as well.  This dataset is actually containe in scikit-
 learn's built in datasets.
 
 
