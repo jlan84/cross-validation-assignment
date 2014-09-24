@@ -1,6 +1,6 @@
 # Regression in Practice
 
-1. [Training and Testing](#training-and-testing)
+1. [Cross Validation](#cross-validation)
 1. [Regression with sklearn](#regression-with-sklearn)
 1. [Fitting a polynomial](#fitting-a-polynomial)
 1. [Bias and Variance](#bias-and-variance)
@@ -22,7 +22,7 @@ data into the first 90% and the remaining 10%. Lucky for us, there is a nice
 method implemented in scipy that splits the dataset randomly for us called
 [test_train_split](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.train_test_split.html).
 
-## KFold Cross Validation
+### KFold Cross Validation
 One thing about doing standard cross validation is that your score can depend on the random split. We can get a more accurate value of the error by using *KFold Cross Validation*. Basically, we break the data into k groups. We take one of these groups and make it the test set. We then train the data on the remaining groups and calculate the error on the test group. We can repeat this process k times and average all the results. This gives us a more accurate picture of the error.
 
 ## Regression with sklearn
