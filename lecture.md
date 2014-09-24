@@ -84,7 +84,6 @@ from sklearn import cross_validation
 kf = cross_validation.KFold(X.shape[0], n_folds=5, shuffle=True)
 results = []
 for train_index, test_index in kf:
-    print test_index
     regr = LinearRegression()
     regr.fit(X[train_index], y[train_index])
     results.append(regr.score(X[test_index], y[test_index]))
