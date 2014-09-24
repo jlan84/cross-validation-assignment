@@ -91,7 +91,7 @@ waste too much data, which is an advantage over having a fixed test subset.
     1. To do this you need to manage randomly sampling **k** folds.
     2. Properly combining those **k** folds into a test and train set
     3. Train your model on your constructed training set and evaluate on the given test set
-    3. Repeat this #2 and #3 **k** times.
+    3. Repeat step __ii__ and __iii__ _k_ times.
     4. Average your results of your error metric
 2. Compare the RMSE for your hold-out set and K-fold cross validation.
 3. Plot the learning curve for a standard ordinary least squares regression (You might want to use: [cross_val_score](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.cross_val_score.html) and [ShuffleSplit](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.ShuffleSplit.html)).
