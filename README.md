@@ -1,7 +1,15 @@
 regularized-regression
 ======================
 
-Cross validation and regularized regression
+Cross validation and regularized regression.
+
+## Lecture
+
+* [Morning Notes](lecture.md)
+* Afternoon slides: [pdf](regularization.pdf), [pptx](regularization.pptx)
+
+
+## Exercise
 
 Moring exercise in [individual.md](individual.md) and afternoon in [pair.md](pair.md).
 
