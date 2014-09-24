@@ -1,40 +1,25 @@
-1. Your company is testing out a new version of the site. They would like to see if the new version results in more friend requests sent. They decided to A/B test it by randomly giving 5% of hits the new site. The results are in these SQL tables. The experiment was run from 2014-08-21 to 2014-08-28 so you should only include friend request data over that time frame.
+1. Load the `data1.txt` into a `pandas` dataframe.  Look at pandas various data [loading functions](http://pandas.pydata.org/pandas-docs/stable/io.html) and pick an appropriate one to use.  Look at it's keyword arguments, they do some pretty powerful things.
 
-    ```
-    landing_page_test
-        userid
-        group
+You often want to use the quickest/easiest methods first to verify your data and explore in an interactive fashion.  Pandas has great support for statistics to [summarize](http://pandas.pydata.org/pandas-docs/stable/basics.html#descriptive-statistics) our data and working with [missing values](http://pandas.pydata.org/pandas-docs/stable/missing_data.html).
 
-    logins
-        userid
-        date
+1. Use pandas descriptive statistics functionality to find the quantiles, mean, median, mode, min, and max of the data.
+2. How many missing values does each column have?  Are there any values that appear to be highly unlikely or impossible in a column?
 
-    friend_requests
-        userid
-        recipient
-        date
-    ```
+A few missing values may not be a huge problem, but many might be systematic of a larger problem, be it a data collection/entry error, data storage/import, etc. There are a few approaches to handling missing values:
+* [Drop data](http://pandas.pydata.org/pandas-docs/stable/missing_data.html#dropping-axis-labels-with-missing-data-dropna)
+* [Fill N/A](http://pandas.pydata.org/pandas-docs/stable/missing_data.html#cleaning-filling-missing-data) values with:
+    * Average of column
+    * 0 or other neutral number
+    * Fill Forward to Fill backward (especially for timeseries)
+    * Interpolation
+* Or just ignore them and hope your analysis/model can handle them
 
-    The `landing_page_test` has a group for every useid, either `new_page` or `old_page`.
+This is often a subjective decision you have to make as the data scientist.  There is no _right_ answer to handling missing data.  And because of such the following questions may not have a concrete answer.
+1. Which columns have missing values that it is probably ok to drop/ignore?
+2. Which columns have values that you cannot (should not) ignore (because there might be too many)?  Why might there be so many for this column(s)?
+3. Are there any missing/NA values that may not actually be missing but just represent a different value?
 
-    Write a SQL query (or queries) to get the data to fill in the following table.
+Missing data isn't the only source of data quality issues. Outliers and invalid values (i.e. an age that is negative) that are out of the expected range of values should also be checked.
 
-    |    group | number of logins | number of friend requests |
-    | -------- | ---------------- | ------------------------- |
-    | new page |                  |                           |
-    | old page |                  |                           |
-
-
-
-2. Now that you've collected the data, let's say here's the results you pulled from the SQL tables:
-
-    |    group | number of logins | number of friend requests |
-    | -------- | ---------------- | ------------------------- |
-    | new page |            51982 |                       680 |
-    | old page |          1039410 |                     12801 |
-
-
-    Are you confident that the new landing page is better? Show your work with both a frequentist and a bayesian approach.
-
-    If not, how would you recommend your team to proceed?
-
+1. Combine the values from the summary statistics you computed earlier with your intuition to determine what values are outlier in each column.  How many of these values are there?
+2. What are the ranges for each column?  How do these compare to one another (i.e. is one way larger than the others)? And what units do you think each column is in?
