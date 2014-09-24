@@ -63,7 +63,7 @@ learn's built in datasets.
 
 ### Exercise:
  
-1. Create a new linear regression model and fit it using the dataset.
+1. Create a new linear regression model using scikit-learn and fit it using the dataset.
 2. Compute the RMSE on the training data.
 3. Examine the coefficients return from your model.  Maybe make a plot of these.
 4. Split your data into a training and test set (hold-out set) and compute the fit on only the training data. Test the RMSE of your results on the test data.
@@ -75,18 +75,20 @@ learn's built in datasets.
 In **k-fold cross-validation**, the training set is split into *k* smaller sets.
 Then, for each of the k "folds":
 
-1. trained model on *k-1* of the folds as training data
-2. validate this model the remaining fold, using an appropriate metric
+* trained model on *k-1* of the folds as training data.
+* validate this model the remaining fold, using an appropriate metric
 
 The performance measure reported by k-fold CV is then the average of the *k*
 computed values. This approach can be computationally expensive, but does not
 waste too much data, which is an advantage over having a fixed test subset.
 
 
-
 ### Exercise:
 
-1. Repeat the above but this time use K-fold cross validation.
+1. Repeat the above but this time use K-fold cross validation (_scikit-learn has functionality to perform K-Fold for you, but for this exercise implement it yourself to really understand it_)
+    1. To do this you need to manage randomly sampling **k** folds.
+    2. Properly combining those **k** folds into a test and train set
+    3. Repeat this process **k** times.
 2. Compare the RMSE for your hold-out set and K-fold cross validation.
 3. Plot the learning curve for a standard ordinary least squares regression (You might want to use: [cross_val_score](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.cross_val_score.html) and [ShuffleSplit](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.ShuffleSplit.html)).
 5. Use K-Fold cross validation to evaluate your gradient descent model (for yesterday) and compare to the performance of scikit learn
