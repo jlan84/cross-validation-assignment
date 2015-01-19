@@ -5,13 +5,12 @@ Cross validation and regularized regression.
 
 ## Lecture
 
-* [Morning Notes](lecture.md)
-* Afternoon slides: [pdf](regularization.pdf), [pptx](regularization.pptx)
+* [Lecture slides](lecture.pdf)
 
 
 ## Exercise
 
-Moring exercise in [individual.md](individual.md) and afternoon in [pair.md](pair.md).
+Morning exercise in [individual.md](individual.md) and afternoon in [pair.md](pair.md).
 
 ## Extra credit
 
