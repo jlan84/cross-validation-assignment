@@ -13,7 +13,7 @@ You should always, before you begin, split your dataset into a train dataset
 and a test dataset. You will use the train dataset to build your model and the
 test dataset to measure your success.
 
-You should generally keep 10-25% of the data for the test set and use the rest
+You should generally keep 10-50% of the data for the test set and use the rest
 for training.
 
 You should always randomly split your data. Data often is sorted in some way (
