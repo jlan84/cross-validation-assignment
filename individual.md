@@ -101,15 +101,19 @@ an overall average of that metric will be calculated over k-folds.
 
 <br>
 
-Here we will implement K-fold validation. `sklearn` has its own implementation
-of K-fold (`sklearn.cross_validation_cross_val_score()`). However,
-to ensure you have an understanding of K-fold, you will implement it here.
+Here we will implement K-fold validation **on the train dataset**.
+`sklearn` has its own implementation of K-fold
+(`sklearn.cross_validation_cross_val_score()`).
+However, to ensure you have an understanding of K-fold, you will implement it
+here.
 
 <br>
 
 1. To do this you need to manage randomly sampling **k** folds.
 
-2. Properly combining those **k** folds into a test and train set
+2. Properly combining those **k** folds into a test and train set on
+   your **on the train dataset**. Outside of the k-fold, there should be
+   another test set which will be referred to as the **hold-out set**.
 
 3. Train your model on your constructed training set and evaluate on the given test set
 
