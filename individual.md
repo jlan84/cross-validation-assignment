@@ -95,7 +95,7 @@ interested in.
 
 
 <div align="center">
-    <img height="350" src="images/kfold.png">
+    <img height="300" src="images/kfold.png">
 </div>
 
 In **k-fold cross-validation**, the training set is split into *k* smaller sets.
