@@ -113,7 +113,7 @@ here.
 
 2. Properly combining those **k** folds into a test and training set on
    your **on the training dataset**. Outside of the k-fold, there should be
-   another test set which will be referred to as the **hold-out set**.
+   another set which will be referred to as the **hold-out set**.
 
 3. Train your model on your constructed training set and evaluate on the given test set
 
