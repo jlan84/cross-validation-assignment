@@ -128,6 +128,8 @@ manually here.
 2. Loop through the `KFold()` object and calculate the RMSE at each fold.
    Compute the avarge RMSE over the K-folds.
 
+3.
+
 ### Exercise:
 
 1. Repeat the above but this time use K-fold cross validation (_scikit-learn has functionality to perform K-Fold for you, but for this exercise implement it yourself to really understand it_)
