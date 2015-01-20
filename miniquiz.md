@@ -1,4 +1,4 @@
-1. Load the `data1.txt` into a `pandas` dataframe.  Look at pandas various data [loading functions](http://pandas.pydata.org/pandas-docs/stable/io.html) and pick an appropriate one to use.  Look at it's keyword arguments, they do some pretty powerful things.
+1. Load the `data1.tsv` into a `pandas` dataframe.  Look at pandas various data [loading functions](http://pandas.pydata.org/pandas-docs/stable/io.html) and pick an appropriate one to use.  Look at it's keyword arguments, they do some pretty powerful things.
 
 You often want to use the quickest/easiest methods first to verify your data and explore in an interactive fashion.  Pandas has great support for statistics to [summarize](http://pandas.pydata.org/pandas-docs/stable/basics.html#descriptive-statistics) our data and working with [missing values](http://pandas.pydata.org/pandas-docs/stable/missing_data.html).
 
