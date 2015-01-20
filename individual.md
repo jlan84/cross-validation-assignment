@@ -109,41 +109,28 @@ an overall average of that metric will be calculated over k-folds.
 
 Here we will implement K-fold validation. `sklearn` has its own implementation
 of K-fold (`sklearn.cross_validation_cross_val_score()`). However,
-to ensure you have a deep-rooted understanding of K-fold, you will implement it
-manually here.
+to ensure you have an understanding of K-fold, you will implement it here.
 
 <br>
 
-1. Use `KFold()` to generate the indices for the train and test data at each
-   fold. Loop through the `kf` and print what is in the object if you are not
-   sure what `KFold` did.
+1. To do this you need to manage randomly sampling **k** folds.
 
-   ```python
-   kf = KFold(rows, n_folds=10) # Usually 10 is a good starting point
-   for train, test in kf:
-       print train
-       print test
-   ```
+2. Properly combining those **k** folds into a test and train set
 
-2. Loop through the `KFold()` object and calculate the RMSE at each fold.
-   Compute the avarge RMSE over the K-folds.
+3. Train your model on your constructed training set and evaluate on the given test set
 
-3.
+3. Repeat step __ii__ and __iii__ _k_ times.
 
-### Exercise:
+4. Average your results of your error metric
 
-1. Repeat the above but this time use K-fold cross validation (_scikit-learn has functionality to perform K-Fold for you, but for this exercise implement it yourself to really understand it_)
-    1. To do this you need to manage randomly sampling **k** folds.
-    2. Properly combining those **k** folds into a test and train set
-    3. Train your model on your constructed training set and evaluate on the given test set
-    3. Repeat step __ii__ and __iii__ _k_ times.
-    4. Average your results of your error metric
-2. Compare the RMSE for your hold-out set and K-fold cross validation.
-3. Plot the learning curve for a standard ordinary least squares regression (You might want to use: [cross_val_score](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.cross_val_score.html) and [ShuffleSplit](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.ShuffleSplit.html)).
-5. Use K-Fold cross validation to evaluate your model and compare to the performance of scikit learn
+5. Compare the RMSE for your hold-out set and K-fold cross validation.
+
+6. Plot the learning curve for a standard ordinary least squares regression
+   (You might want to use: [cross_val_score](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.cross_val_score.html) and [ShuffleSplit](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.ShuffleSplit.html)).
+
 6. Plot a learning curve and test vs train error curve.
 
-### Extra Credit: Stepwise Regression
+### Part 3: Stepwise Regression (Extra Credit)
 
 While stepwise regression has its many [critics](http://andrewgelman.com/2014/06/02/hate-stepwise-regression/), it is a useful exercise to introduce the concept of feature selection in the context of linear regression. This extra credit exercise has two components of different difficulties. First, use the `scikit-learn` reverse feature elimation (a greedy feature elimination algorithm) to implement something similar to sequential backward selection. The second, more difficult part is implementing sequential forward selection.
 
