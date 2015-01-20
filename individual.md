@@ -29,7 +29,7 @@ interested in.
    house_price = boston.target
    ```
 
-   Descriptions for each column in `feature`:
+   Descriptions for each column in `features`:
 
    ```
    Attribute Information (in order):
@@ -81,16 +81,9 @@ interested in.
     <img src="images/rmse.png">
    </div>
 
-5. Calculate the R<sup>2</sup> using `sklearn.metrics.r2_score()`. Also write
-   a function to calculate adjusted R<sup>2</sup>. Research and explain the
-   pro and cons of using RMSE, R<sup>2</sup> and adjusted R<sup>2</sup>.
 
-   <div align="center">
-    <img src="images/adj_r_sq.png">
-   </div>
-
-6. Explain the value of evaluating R<sup>2</sup> / adjusted R<sup>2</sup> /
-   RMSE on a test set instead of just on the whole data set.
+5. Explain the value of evaluating R<sup>2</sup> / adjusted R<sup>2</sup> /
+   RMSE on a separate test set, instead of just calculating RMSE on the entire data set.
 
 ## Part 2: K-fold Cross Validation
 
