@@ -2,10 +2,10 @@
 
 This morning you will learn how to use cross validation to evaluate your model.
 The goal for this morning is not to try to build a perfect model, as you
-done yesterday. The goal is to evaluate the model given some metric you are
+tried to do yesterday. The goal is to evaluate the model given some metric you are
 interested in.
 
-**Note: Use ipython notebook to do prototype your code.**
+**Note: Use ipython notebook to prototype your code.**
       **Put the code in** `cross_val.py` **afterwards for submission.**
 
 <br>
@@ -29,7 +29,7 @@ interested in.
    house_price = boston.target
    ```
 
-   Description for each of the column in `feature` is as follows:
+   Descriptions for each column in `features`:
 
    ```
    Attribute Information (in order):
@@ -54,15 +54,15 @@ interested in.
 
    ```python
    train_feature, test_feature, train_target, test_target = \
-   train_test_split(features, target, test_size=0.33)
+   train_test_split(features, target, test_size=0.3)
    ```
 
 3. Use `LinearRegression()` in scikit-learn to build a model which uses the
-   `features` to predict `target`. Only fit the train data set.
+   `features` to predict `target`. Only fit the model using the training data set.
 
-   Note that there is multicollinarity and other issues in the data, do not
-   worry about those. We will learn about Lasso and Ridge regularization this
-   afternoon (alternative to the methods you have learnt yesterday) to
+   Note that there is multicollinarity and other issues in the data.  Do not
+   worry about this. We will learn about Lasso and Ridge regularization this
+   afternoon (alternative to the methods you have learned yesterday) to
    deal with those issues.
 
    ```python
@@ -81,22 +81,16 @@ interested in.
     <img src="images/rmse.png">
    </div>
 
-5. Calculate the R<sup>2</sup> using `sklearn.metrics.r2_score()`. Also write
-   a function to calculate adjusted R<sup>2</sup>. Research and explain the
-   pro and cons of using RMSE, R<sup>2</sup> and adjusted R<sup>2</sup>.
+   Which did you expect to be higher?
 
-   <div align="center">
-    <img src="images/adj_r_sq.png">
-   </div>
-
-6. Explain the value of evaluating R<sup>2</sup> / adjusted R<sup>2</sup> /
-   RMSE on a test set instead of just on the whole data set.
+5. Explain the value of evaluating RMSE on a separate test set (instead of fitting a
+   model and calculating RMSE on the entire data set).
 
 ## Part 2: K-fold Cross Validation
 
 In K-fold cross validation, the data is split into **k** groups. One group
 out of the k groups will be the test set, the rest (**k-1**) groups will
-be the train set. In the next iteration, another group will be the test set,
+be the training set. In the next iteration, another group will be the test set,
 and the rest will be the train set. The process repeats for k iterations (k-fold).
 In each fold, a metric for accuracy (RMSE in this case) will be calculated and
 an overall average of that metric will be calculated over k-folds.
