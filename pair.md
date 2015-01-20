@@ -4,9 +4,9 @@
 2. Fit the same dataset but with a Ridge Regression with an `alpha = 0.5` to start
 
 
-Notice the linear regression is not defined for scenarios where the number of
+**Notice the linear regression is not defined for scenarios where the number of
 features/parameters exceeds the number of observations. It performs poorly as
-long as the number of sample is not several times the number of features.
+long as the number of sample is not several times the number of features.**
 
 One approach for dealing with overfitting is to **regularize** the regession
 model.
@@ -67,7 +67,7 @@ for param in params.T:
 ```
 
 
-### Exercise: 
+### Exercise:
 
 1. Plot the test error and train error curves for Ridge regression with different alpha parameters.
    Which model would you select based on your test and train curves?
@@ -94,9 +94,9 @@ Note how the Lasso imposes sparseness on the parameter coefficients:
 
 ### Exercise:
 
- 1. Plot the parameters (coefficients) of the LASSO regression (y-axis) versus the value of the alpha parameter. 
+ 1. Plot the parameters (coefficients) of the LASSO regression (y-axis) versus the value of the alpha parameter.
  2. Make a plot of the training error and the testing error as a function of the alpha parameter.
- 3. Select a model based on the test and training error curves.  
+ 3. Select a model based on the test and training error curves.
 
 
 ```python
@@ -115,5 +115,5 @@ for param in params.T:
 ```
 
 
-### Exercise: 
+### Exercise:
 1.  Finally, compare three models:  your chosen Ridge model, your chosen Lasso model, and your chosen Ordinary Least Squares model.
