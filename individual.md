@@ -26,7 +26,7 @@ interested in.
    ```python
    boston = load_boston()
    features = boston.data
-   house_price = boston.target
+   target = boston.target # housing price
    ```
 
    Descriptions for each column in `features`:
