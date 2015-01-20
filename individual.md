@@ -1,9 +1,9 @@
 ## Part 1: One-fold Cross Validation
 
 This morning you will learn how to use cross validation to evaluate your model.
-The goal for this morning is not to build a perfect model, as you have tried doing
-yesterday. The goal is to evaluate the model given some metric you are interested
-in.
+The goal for this morning is not to try to build a perfect model, as you
+done yesterday. The goal is to evaluate the model given some metric you are
+interested in.
 
 Note: Use ipython notebook to do prototype your code.
       Put the code in `cross_val.py` afterwards for submission.
