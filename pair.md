@@ -94,9 +94,9 @@ Note how the Lasso imposes sparseness on the parameter coefficients:
 
 ### Exercise:
 
- 1. Make a plot of the training error and the testing error as a function of the alpha parameter.
- 2. Plot the parameters (coefficients) of the LASSO regression (y-axis) versus the value of the alpha parameter. 
- 3. Plot the learning curves of the Lasso Regression and Ordinary Least Squares Regression.  Compare these two.
+ 1. Plot the parameters (coefficients) of the LASSO regression (y-axis) versus the value of the alpha parameter. 
+ 2. Make a plot of the training error and the testing error as a function of the alpha parameter.
+ 3. Select a model based on the test and training error curves.  
 
 
 ```python
@@ -116,4 +116,4 @@ for param in params.T:
 
 
 ### Exercise: 
-1. Plot the learning curves of the Ridge Regression, LASSO Regression, and Ordinary Least Squares Regression.  Compare all three. 
+1.  Finally, compare three models:  your chosen Ridge model, your chosen Lasso model, and your chosen Ordinary Least Squares model.
