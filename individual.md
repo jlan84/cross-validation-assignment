@@ -117,7 +117,7 @@ here.
 
 3. Train your model on your constructed training set and evaluate on the given test set
 
-3. Repeat step __ii__ and __iii__ _k_ times.
+3. Repeat steps __2__ and __3__ _k_ times.
 
 4. Average your results of your error metric.
 
