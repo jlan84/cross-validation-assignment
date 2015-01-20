@@ -16,6 +16,7 @@ interested in.
    from sklearn.linear_model import LinearRegression
    from sklearn.cross_validation import KFold
    from sklearn.cross_validation import train_test_split
+   from sklearn.cross_validation import cross_val_score
    import numpy as np
    from sklearn.datasets import load_boston
    ```
@@ -93,21 +94,39 @@ interested in.
 
 ## Part 2: K-fold Cross Validation
 
+In K-fold cross validation, the data is split into **k** groups. One group
+out of the k groups will be the test set, the rest (**k-1**) groups will
+be the train set. In the next iteration, another group will be the test set,
+and the rest will be the train set. The process repeats for k iterations (k-fold).
+In each fold, a metric for accuracy (RMSE in this case) will be calculated and
+an overall average of that metric will be calculated over k-folds.
 
 <div align="center">
     <img height="300" src="images/kfold.png">
 </div>
 
-In **k-fold cross-validation**, the training set is split into *k* smaller sets.
-Then, for each of the k "folds":
+<br>
 
-* trained model on *k-1* of the folds as training data.
-* validate this model the remaining fold, using an appropriate metric
+Here we will implement K-fold validation. `sklearn` has its own implementation
+of K-fold (`sklearn.cross_validation_cross_val_score()`). However,
+to ensure you have a deep-rooted understanding of K-fold, you will implement it
+manually here.
 
-The performance measure reported by k-fold CV is then the average of the *k*
-computed values. This approach can be computationally expensive, but does not
-waste too much data, which is an advantage over having a fixed test subset.
+<br>
 
+1. Use `KFold()` to generate the indices for the train and test data at each
+   fold. Loop through the `kf` and print what is in the object if you are not
+   sure what `KFold` did.
+
+   ```python
+   kf = KFold(rows, n_folds=10) # Usually 10 is a good starting point
+   for train, test in kf:
+       print train
+       print test
+   ```
+
+2. Loop through the `KFold()` object and calculate the RMSE at each fold.
+   Compute the avarge RMSE over the K-folds.
 
 ### Exercise:
 
@@ -119,7 +138,7 @@ waste too much data, which is an advantage over having a fixed test subset.
     4. Average your results of your error metric
 2. Compare the RMSE for your hold-out set and K-fold cross validation.
 3. Plot the learning curve for a standard ordinary least squares regression (You might want to use: [cross_val_score](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.cross_val_score.html) and [ShuffleSplit](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.ShuffleSplit.html)).
-5. Use K-Fold cross validation to evaluate your gradient descent model (for yesterday) and compare to the performance of scikit learn
+5. Use K-Fold cross validation to evaluate your model and compare to the performance of scikit learn
 6. Plot a learning curve and test vs train error curve.
 
 ### Extra Credit: Stepwise Regression
