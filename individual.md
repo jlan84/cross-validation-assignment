@@ -49,8 +49,8 @@ interested in.
     - MEDV     Median value of owner-occupied homes in $1000's
    ```
 
-3. Use `train_test_split()` in scikit learn to make a test and train dataset.
-   The train-test split is usually 70 : 30.
+3. Use `train_test_split()` in scikit learn to make a test and training dataset.
+   The training-test split is usually 70 : 30.
 
    ```python
    train_feature, test_feature, train_target, test_target = \
@@ -68,13 +68,13 @@ interested in.
    ```python
    linear = LinearRegression()
    linear.fit(train_feature, train_target)
-   # You can call predict to get the predicted values for train and test
+   # You can call predict to get the predicted values for training and test
    train_predicted = linear.predict(train_feature)
    test_predicted = linear.predict(test_feature)
    ```
 
 4. Write a function that takes the `target` and the `predicted` and calculate
-   the **RMSE for the train data and the test data**. Use
+   the **RMSE for the training data and the test data**. Use
    `sklearn.metrics.mean_squared_error()` to confirm your results.
 
    <div align="center">
@@ -91,7 +91,7 @@ interested in.
 In K-fold cross validation, the data is split into **k** groups. One group
 out of the k groups will be the test set, the rest (**k-1**) groups will
 be the training set. In the next iteration, another group will be the test set,
-and the rest will be the train set. The process repeats for k iterations (k-fold).
+and the rest will be the training set. The process repeats for k iterations (k-fold).
 In each fold, a metric for accuracy (RMSE in this case) will be calculated and
 an overall average of that metric will be calculated over k-folds.
 
@@ -101,7 +101,7 @@ an overall average of that metric will be calculated over k-folds.
 
 <br>
 
-Here we will implement K-fold validation **on the train dataset**.
+Here we will implement K-fold validation **on the training dataset**.
 `sklearn` has its own implementation of K-fold
 (`sklearn.cross_validation_cross_val_score()`).
 However, to ensure you have an understanding of K-fold, you will implement it
@@ -111,8 +111,8 @@ here.
 
 1. To do this you need to manage randomly sampling **k** folds.
 
-2. Properly combining those **k** folds into a test and train set on
-   your **on the train dataset**. Outside of the k-fold, there should be
+2. Properly combining those **k** folds into a test and training set on
+   your **on the training dataset**. Outside of the k-fold, there should be
    another test set which will be referred to as the **hold-out set**.
 
 3. Train your model on your constructed training set and evaluate on the given test set
@@ -123,7 +123,7 @@ here.
 
 5. Compare the RMSE for your hold-out set and K-fold cross validation.
 
-6. Plot a learning curve and test vs train error curve.
+6. Plot a learning curve and test vs training error curve.
    (You might want to use: [cross_val_score](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.cross_val_score.html) which is scikit-learn's built-in
    function for K-fold cross validation).
 
