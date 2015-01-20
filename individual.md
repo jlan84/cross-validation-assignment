@@ -119,12 +119,13 @@ here.
 
 3. Repeat step __ii__ and __iii__ _k_ times.
 
-4. Average your results of your error metric
+4. Average your results of your error metric.
 
 5. Compare the RMSE for your hold-out set and K-fold cross validation.
 
 6. Plot the learning curve for a standard ordinary least squares regression
-   (You might want to use: [cross_val_score](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.cross_val_score.html) and [ShuffleSplit](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.ShuffleSplit.html)).
+   (You might want to use: [cross_val_score](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.cross_val_score.html) which is scikit-learns built-in
+   function for K-fold cross validation).
 
 6. Plot a learning curve and test vs train error curve.
 
