@@ -1,71 +1,98 @@
+## Part 1: One-fold Cross Validation
 
-## Cross Validation
+This morning you will learn how to use cross validation to evaluate your model.
+Th goal for this morning is not to build a perfect model, as you have tried doing
+yesterday. The goal is to evaluate the model given some metric you are interested
+in.
 
-For this Exercise you will be comparing Ridge Regression and LASSO regression to
-Ordinary Least Squares.  You will also get experience with techniques of cross
-validation.  We will be using [scikit-learn](http://scikit-
-learn.org/stable/supervised_learning.html#supervised-learning) to fit our
-models.
+Note: Use ipython notebook to do prototype your code.
+      Put the code in `cross_val.py` afterwards for submission.
 
+<br>
 
-```python
-%pylab inline
+1. Include the following lines to import the libraries needed:
 
-from sklearn.cross_validation import KFold
-from sklearn.linear_model import LinearRegression, Lasso, Ridge, ElasticNet
-from sklearn.linear_model import LassoCV, RidgeCV
-from sklearn.cross_validation import train_test_split
-import numpy as np
-import pylab as pl
+   ```python
+   from sklearn.linear_model import LinearRegression
+   from sklearn.cross_validation import KFold
+   from sklearn.cross_validation import train_test_split
+   import numpy as np
+   from sklearn.datasets import load_boston
+   ```
 
-from sklearn.datasets import load_boston
+2. Load in the boston data with the following commands.
 
-boston = load_boston()
-X = np.array([np.concatenate((v,[1])) for v in boston.data])
-Y = boston.target
-```
+   ```python
+   boston = load_boston()
+   features = boston.data
+   house_price = boston.target
+   ```
 
-    Populating the interactive namespace from numpy and matplotlib
+   Description for each of the column in `feature` is as follows:
 
+   ```
+   Attribute Information (in order):
+    - CRIM     per capita crime rate by town
+    - ZN       proportion of residential land zoned for lots over 25,000 sq.ft.
+    - INDUS    proportion of non-retail business acres per town
+    - CHAS     Charles River dummy variable (= 1 if tract bounds river; 0 otherwise)
+    - NOX      nitric oxides concentration (parts per 10 million)
+    - RM       average number of rooms per dwelling
+    - AGE      proportion of owner-occupied units built prior to 1940
+    - DIS      weighted distances to five Boston employment centres
+    - RAD      index of accessibility to radial highways
+    - TAX      full-value property-tax rate per $10,000
+    - PTRATIO  pupil-teacher ratio by town
+    - B        1000(Bk - 0.63)^2 where Bk is the proportion of blacks by town
+    - LSTAT    % lower status of the population
+    - MEDV     Median value of owner-occupied homes in $1000's
+   ```
 
+3. Use `train_test_split()` in scikit learn to make a test and train dataset.
+   The train-test split is usually 70 : 30.
 
-```python
-print Y[:10]
-```
+   ```python
+   train_feature, test_feature, train_target, test_target = \
+   train_test_split(features, target, test_size=0.33)
+   ```
 
-    [ 24.   21.6  34.7  33.4  36.2  28.7  22.9  27.1  16.5  18.9]
+3. Use `LinearRegression()` in scikit-learn to build a model which uses the
+   `features` to predict `target`. Only fit the train data set.
 
+   Note that there is multicollinarity and other issues in the data, do not
+   worry about those. We will learn about Lasso and Ridge regularization this
+   afternoon (alternative to the methods you have learnt yesterday) to
+   deal with those issues.
 
+   ```python
+   linear = LinearRegression()
+   linear.fit(train_feature, train_target)
+   # You can call predict to get the predicted values for train and test
+   train_predicted = linear.predict(train_feature)
+   test_predicted = linear.predict(test_feature)
+   ```
 
-```python
-print X[:2]
-```
+4. Write a function that takes the `target` and the `predicted` and calculate
+   the **RMSE for the train data and the test data**. Use
+   `sklearn.metrics.mean_squared_error()` to confirm your results.
 
-    [[  6.32000000e-03   1.80000000e+01   2.31000000e+00   0.00000000e+00
-        5.38000000e-01   6.57500000e+00   6.52000000e+01   4.09000000e+00
-        1.00000000e+00   2.96000000e+02   1.53000000e+01   3.96900000e+02
-        4.98000000e+00   1.00000000e+00]
-     [  2.73100000e-02   0.00000000e+00   7.07000000e+00   0.00000000e+00
-        4.69000000e-01   6.42100000e+00   7.89000000e+01   4.96710000e+00
-        2.00000000e+00   2.42000000e+02   1.78000000e+01   3.96900000e+02
-        9.14000000e+00   1.00000000e+00]]
+   <div align="center">
+    <img src="images/rmse.png">
+   </div>
 
+5. Calculate the R<sup>2</sup> using `sklearn.metrics.r2_score()`. Also write
+   a function to calculate adjusted R<sup>2</sup>. Research and explain the
+   pro and cons of using RMSE, R<sup>2</sup> and adjusted R<sup>2</sup>.
 
-### Dataset
+   <div align="center">
+    <img src="images/adj_r_sq.png">
+   </div>
 
-We will be using a [dataset](http://archive.ics.uci.edu/ml/datasets/Housing)
-from the UCI machine learning Repository for this Exercise.  Feel free to play
-around with any of the others that are [suited](http://archive.ics.uci.edu/ml/datasets.html?format=&task=reg&att=&area=&numAtt=&numIns=&type=&sort=nameUp&view=table) for regression as well.  This dataset is actually containe in scikit-
-learn's built in datasets.
+6. Explain the value of evaluating R<sup>2</sup> / adjusted R<sup>2</sup> /
+   RMSE on a test set instead of just on the whole data set.
 
+## Part 2: k-fold Cross Validation
 
-### Exercise:
- 
-1. Create a new linear regression model using scikit-learn and fit it using the dataset.
-2. Compute the RMSE on the training data.
-3. Examine the coefficients return from your model.  Maybe make a plot of these.
-4. Split your data into a training and test set (hold-out set) and compute the fit on only the training data. Test the RMSE of your results on the test data.
-5. Experiment around with the ratio of these (i.e. 70%/30% train/test, 80%/20% train/test, etc.)
 
 
 ## K-fold Cross-validation
@@ -95,7 +122,7 @@ waste too much data, which is an advantage over having a fixed test subset.
 3. Plot the learning curve for a standard ordinary least squares regression (You might want to use: [cross_val_score](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.cross_val_score.html) and [ShuffleSplit](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.ShuffleSplit.html)).
 5. Use K-Fold cross validation to evaluate your gradient descent model (for yesterday) and compare to the performance of scikit learn
 6. Plot a learning curve and test vs train error curve.
- 
+
 ### Extra Credit: Stepwise Regression
 
 While stepwise regression has its many [critics](http://andrewgelman.com/2014/06/02/hate-stepwise-regression/), it is a useful exercise to introduce the concept of feature selection in the context of linear regression. This extra credit exercise has two components of different difficulties. First, use the `scikit-learn` reverse feature elimation (a greedy feature elimination algorithm) to implement something similar to sequential backward selection. The second, more difficult part is implementing sequential forward selection.
