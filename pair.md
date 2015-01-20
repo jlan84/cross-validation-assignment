@@ -47,7 +47,7 @@ this parameter via cross-validation.
 
 ### Exercise:
 
-1. Plot the parameters (coefficients) of the Ridge regression (y-axis) versus the value of the alpha parameter. (There will be as many lines as there are parameters)
+1. Plot the parameters (coefficients) of the Ridge regression (y-axis) versus the value of the alpha parameter. (There will be as many lines as there are predictors)
 
 ```python
 from sklearn import preprocessing
@@ -69,14 +69,15 @@ for param in params.T:
 
 ### Exercise: 
 
-1. Plot the test error and train error curves for Ridge regression with different alpha parameters
+1. Plot the test error and train error curves for Ridge regression with different alpha parameters.
+   Which model would you select based on your test and train curves?
 
 
 
 ## Lasso
 
-**The Lasso estimator** is useful to impose sparsity on the coefficients. In
-other words, it is to be prefered if we believe that many of the features are
+**The Lasso estimator** is useful for imposing sparsity on the coefficients. In
+other words, it is generally preferred if we believe many of the features are
 not relevant.
 
 <img src="http://latex.codecogs.com/gif.latex?$$\hat{\beta}^{lasso}&space;=&space;\text{argmin}_{\beta}\left\{\frac{1}{2}\sum_{i=1}^N&space;(y_i&space;-&space;\beta_0&space;-&space;\sum_{j=1}^k&space;x_{ij}&space;\beta_j)^2&space;&plus;&space;\lambda&space;\sum_{j=1}^k&space;|\beta_j|&space;\right\}$$" title="$$\hat{\beta}^{lasso} = \text{argmin}_{\beta}\left\{\frac{1}{2}\sum_{i=1}^N (y_i - \beta_0 - \sum_{j=1}^k x_{ij} \beta_j)^2 + \lambda \sum_{j=1}^k |\beta_j| \right\}$$" />
