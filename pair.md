@@ -32,7 +32,7 @@ The estimator for the ridge regression model is:
 
 <img src="http://latex.codecogs.com/gif.latex?$$\hat{\beta}^{ridge}&space;=&space;(X'X&space;&plus;&space;\alpha&space;I)^{-1}X'y$$" title="$$\hat{\beta}^{ridge} = (X'X + \alpha I)^{-1}X'y$$" />
 
-
+where `'` denotes transpose.
 
 
 #### Shrinkage
