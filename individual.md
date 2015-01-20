@@ -1,7 +1,7 @@
 ## Part 1: One-fold Cross Validation
 
 This morning you will learn how to use cross validation to evaluate your model.
-Th goal for this morning is not to build a perfect model, as you have tried doing
+The goal for this morning is not to build a perfect model, as you have tried doing
 yesterday. The goal is to evaluate the model given some metric you are interested
 in.
 
