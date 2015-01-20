@@ -95,10 +95,8 @@ interested in.
 
 
 <div align="center">
-    <img height="150" src="images/kfold.png">
+    <img height="350" src="images/kfold.png">
 </div>
-
-![kfold](http://www.intechopen.com/source/html/39037/media/image4.jpeg)
 
 In **k-fold cross-validation**, the training set is split into *k* smaller sets.
 Then, for each of the k "folds":
