@@ -83,15 +83,14 @@ interested in.
  
    Which did you expect to be higher?
 
-5. Explain the value of evaluating R<sup>2</sup> / adjusted R<sup>2</sup> /
-   RMSE on a separate test set (instead of fitting a model and calculating RMSE 
-   on the entire data set).  
+5. Explain the value of evaluating RMSE on a separate test set (instead of fitting a 
+   model and calculating RMSE on the entire data set).  
 
 ## Part 2: K-fold Cross Validation
 
 In K-fold cross validation, the data is split into **k** groups. One group
 out of the k groups will be the test set, the rest (**k-1**) groups will
-be the train set. In the next iteration, another group will be the test set,
+be the training set. In the next iteration, another group will be the test set,
 and the rest will be the train set. The process repeats for k iterations (k-fold).
 In each fold, a metric for accuracy (RMSE in this case) will be calculated and
 an overall average of that metric will be calculated over k-folds.
@@ -104,7 +103,7 @@ an overall average of that metric will be calculated over k-folds.
 
 Here we will implement K-fold validation. `sklearn` has its own implementation
 of K-fold (`sklearn.cross_validation_cross_val_score()`). However,
-to ensure you have a deep-rooted understanding of K-fold, you will implement it
+to ensure you have a deep understanding of K-fold, you will implement it
 manually here.
 
 <br>
@@ -121,7 +120,7 @@ manually here.
    ```
 
 2. Loop through the `KFold()` object and calculate the RMSE at each fold.
-   Compute the avarge RMSE over the K-folds.
+   Compute the average RMSE over the K-folds.
 
 3.
 
