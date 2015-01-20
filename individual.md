@@ -5,7 +5,7 @@ The goal for this morning is not to try to build a perfect model, as you
 tried to do yesterday. The goal is to evaluate the model given some metric you are
 interested in.
 
-**Note: Use ipython notebook to do prototype your code.**
+**Note: Use ipython notebook to prototype your code.**
       **Put the code in** `cross_val.py` **afterwards for submission.**
 
 <br>
