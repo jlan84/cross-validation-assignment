@@ -34,9 +34,6 @@ The estimator for the ridge regression model is:
 
 
 
-### Exercise:
- 
- 1. Make a plot of the training error and the testing error as a function of the alpha parameter.
 
 #### Shrinkage
 
@@ -72,9 +69,7 @@ for param in params.T:
 
 ### Exercise: 
 
-1. Plot the learning curve of the Ridge regression with different alpha parameters
-2. Plot the learning curves of the Ridge Regression and Ordinary Least Squares Regression.  Compare these two.
-
+1. Plot the test error and train error curves for Ridge regression with different alpha parameters
 
 
 
