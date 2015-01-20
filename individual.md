@@ -80,10 +80,12 @@ interested in.
    <div align="center">
     <img src="images/rmse.png">
    </div>
-
+ 
+   Which did you expect to be higher?
 
 5. Explain the value of evaluating R<sup>2</sup> / adjusted R<sup>2</sup> /
-   RMSE on a separate test set, instead of just calculating RMSE on the entire data set.
+   RMSE on a separate test set, instead of just fitting a model and calculating RMSE 
+   on the entire data set.
 
 ## Part 2: K-fold Cross Validation
 
