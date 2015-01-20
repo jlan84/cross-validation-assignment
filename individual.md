@@ -91,11 +91,12 @@ interested in.
 6. Explain the value of evaluating R<sup>2</sup> / adjusted R<sup>2</sup> /
    RMSE on a test set instead of just on the whole data set.
 
-## Part 2: k-fold Cross Validation
+## Part 2: K-fold Cross Validation
 
 
-
-## K-fold Cross-validation
+<div align="center">
+    <img height="150" src="images/kfold.png">
+</div>
 
 ![kfold](http://www.intechopen.com/source/html/39037/media/image4.jpeg)
 
