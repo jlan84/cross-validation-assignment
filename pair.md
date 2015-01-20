@@ -6,17 +6,17 @@
 
 **Notice the linear regression is not defined for scenarios where the number of
 features/parameters exceeds the number of observations. It performs poorly as
-long as the number of sample is not several times the number of features.**
+long as the number of samples is not several times the number of features.**
 
 One approach for dealing with overfitting is to **regularize** the regession
 model.
 
-The **ridge estimator** is a simple, computationally efficient regularization
+The **ridge estimator** is a simple and computationally efficient regularization
 for linear regression.
 
 <img src="http://latex.codecogs.com/gif.latex?$$\hat{\beta}^{ridge}&space;=&space;\text{argmin}_{\beta}\left\{\sum_{i=1}^N&space;(y_i&space;-&space;\beta_0&space;-&space;\sum_{j=1}^k&space;x_{ij}&space;\beta_j)^2&space;&plus;&space;\alpha&space;\sum_{j=1}^k&space;\beta_j^2&space;\right\}$$" title="$$\hat{\beta}^{ridge} = \text{argmin}_{\beta}\left\{\sum_{i=1}^N (y_i - \beta_0 - \sum_{j=1}^k x_{ij} \beta_j)^2 + \alpha \sum_{j=1}^k \beta_j^2 \right\}$$" />
 
-Typically, we are not interested in shrinking the mean, and coefficients are
+Typically, we are not interested in shrinking the mean. Furthermore, coefficients are
 standardized to have zero mean and unit L2 norm. Hence,
 
 <img src="http://latex.codecogs.com/gif.latex?$$\hat{\beta}^{ridge}&space;=&space;\text{argmin}_{\beta}&space;\sum_{i=1}^N&space;(y_i&space;-&space;\sum_{j=1}^k&space;x_{ij}&space;\beta_j)^2$$" title="$$\hat{\beta}^{ridge} = \text{argmin}_{\beta} \sum_{i=1}^N (y_i - \sum_{j=1}^k x_{ij} \beta_j)^2$$" />
@@ -69,8 +69,8 @@ for param in params.T:
 
 ### Exercise:
 
-1. Plot the test error and train error curves for Ridge regression with different alpha parameters.
-   Which model would you select based on your test and train curves?
+1. Plot the test error and training error curves for Ridge regression with different alpha parameters.
+   Which model would you select based on your test and training curves?
 
 
 
