@@ -2,7 +2,7 @@
 
 This morning you will learn how to use cross validation to evaluate your model.
 The goal for this morning is not to try to build a perfect model, as you
-done yesterday. The goal is to evaluate the model given some metric you are
+tried to do yesterday. The goal is to evaluate the model given some metric you are
 interested in.
 
 **Note: Use ipython notebook to do prototype your code.**
@@ -29,7 +29,7 @@ interested in.
    house_price = boston.target
    ```
 
-   Description for each of the column in `feature` is as follows:
+   Descriptions for each column in `feature`:
 
    ```
    Attribute Information (in order):
@@ -54,15 +54,15 @@ interested in.
 
    ```python
    train_feature, test_feature, train_target, test_target = \
-   train_test_split(features, target, test_size=0.33)
+   train_test_split(features, target, test_size=0.3)
    ```
 
 3. Use `LinearRegression()` in scikit-learn to build a model which uses the
-   `features` to predict `target`. Only fit the train data set.
+   `features` to predict `target`. Only fit the model using the training data set.
 
-   Note that there is multicollinarity and other issues in the data, do not
-   worry about those. We will learn about Lasso and Ridge regularization this
-   afternoon (alternative to the methods you have learnt yesterday) to
+   Note that there is multicollinarity and other issues in the data.  Do not
+   worry about this. We will learn about Lasso and Ridge regularization this
+   afternoon (alternative to the methods you have learned yesterday) to
    deal with those issues.
 
    ```python
