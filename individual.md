@@ -49,8 +49,8 @@ interested in.
     - MEDV     Median value of owner-occupied homes in $1000's
    ```
 
-3. Use `train_test_split()` in scikit learn to make a test and training dataset.
-   The training-test split is usually 70 : 30.
+3. Use `train_test_split()` in scikit learn to make a training and test dataset.
+   There's no rule on train-test splits.  Below we use a 70 : 30 split.
 
    ```python
    train_feature, test_feature, train_target, test_target = \
@@ -60,10 +60,10 @@ interested in.
 3. Use `LinearRegression()` in scikit-learn to build a model which uses the
    `features` to predict `target`. Only fit the model using the training data set.
 
-   Note that there is multicollinarity and other issues in the data.  Do not
-   worry about this. We will learn about Lasso and Ridge regularization this
+   Note that there is multicollinearity and other issues in the data.  Don't worry
+   about this for now. We will learn about Lasso and Ridge regularization this
    afternoon (alternative to the methods you have learned yesterday) to
-   deal with those issues.
+   deal with some of the issues.
 
    ```python
    linear = LinearRegression()
@@ -74,17 +74,13 @@ interested in.
    ```
 
 4. Write a function that takes the `target` and the `predicted` and calculate
-   the **RMSE for the training data and the test data**. Use
+   the **MSE for the training data and the test data**. Use
    `sklearn.metrics.mean_squared_error()` to confirm your results.
-
-   <div align="center">
-    <img src="images/rmse.png">
-   </div>
 
    Which did you expect to be higher?
 
-5. Explain the value of evaluating RMSE on a separate test set (instead of fitting a
-   model and calculating RMSE on the entire data set).
+5. Explain the value of evaluating MSE on a separate test set (instead of fitting a
+   model and calculating MSE on the entire data set).
 
 ## Part 2: K-fold Cross Validation
 
@@ -92,7 +88,7 @@ In K-fold cross validation, the data is split into **k** groups. One group
 out of the k groups will be the test set, the rest (**k-1**) groups will
 be the training set. In the next iteration, another group will be the test set,
 and the rest will be the training set. The process repeats for k iterations (k-fold).
-In each fold, a metric for accuracy (RMSE in this case) will be calculated and
+In each fold, a metric for accuracy (MSE in this case) will be calculated and
 an overall average of that metric will be calculated over k-folds.
 
 <div align="center">
@@ -121,7 +117,7 @@ here.
 
 4. Average your results of your error metric.
 
-5. Compare the RMSE for your hold-out set and K-fold cross validation.
+5. Compare the MSE for your hold-out set and K-fold cross validation.
 
 6. Plot a learning curve and test vs training error curve.
    (You might want to use: [cross_val_score](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.cross_val_score.html) which is scikit-learn's built-in
