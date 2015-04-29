@@ -117,11 +117,11 @@ here.
 
 4. Average your results of your error metric.
 
-5. Compare the MSE for your hold-out set and K-fold cross validation.
+5. Compare the MSE for your test set in Part 1. and your K-fold cross validated error in `4.`.
 
 6. Plot a learning curve and test vs training error curve.
    (You might want to use: [cross_val_score](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.cross_val_score.html) which is scikit-learn's built-in
-   function for K-fold cross validation).
+   function for K-fold cross validation).  See [Illustration of Learning Curves](http://www.astro.washington.edu/users/vanderplas/Astr599/notebooks/18_IntermediateSklearn) for more details.  
 
 
 ### Part 3: Stepwise Regression (Extra Credit)
