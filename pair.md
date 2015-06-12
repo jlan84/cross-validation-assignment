@@ -1,7 +1,7 @@
 ## Regularization
 
 1. Now that you have experimented with linear regression we will begin exploring Ridge Regression.
-2. Fit the same dataset but with a Ridge Regression with an `alpha = 0.5` to start
+2. Fit the same Boston housing dataset but with a Ridge Regression with an `alpha = 0.5` to start
 
 
 **Notice the linear regression is not defined for scenarios where the number of
