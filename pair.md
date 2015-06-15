@@ -14,23 +14,19 @@ model.
 The **ridge estimator** is a simple and computationally efficient regularization
 for linear regression.
 
-<img src="http://latex.codecogs.com/gif.latex?$$\hat{\beta}^{ridge}&space;=&space;\text{argmin}_{\beta}\left\{\sum_{i=1}^N&space;(y_i&space;-&space;\beta_0&space;-&space;\sum_{j=1}^k&space;x_{ij}&space;\beta_j)^2&space;&plus;&space;\alpha&space;\sum_{j=1}^k&space;\beta_j^2&space;\right\}$$" title="$$\hat{\beta}^{ridge} = \text{argmin}_{\beta}\left\{\sum_{i=1}^N (y_i - \beta_0 - \sum_{j=1}^k x_{ij} \beta_j)^2 + \alpha \sum_{j=1}^k \beta_j^2 \right\}$$" />
+<img src="http://latex.codecogs.com/gif.latex?%5Clarge%20%5Chat%7B%5Cbeta%7D%5E%7Bridge%7D%20%3D%20%5Ctext%7Bargmin%7D_%7B%5Cbeta%7D%5Cleft%5C%7B%5Csum_%7Bi%3D1%7D%5EN%20%5Cleft%28y_i%20-%20%5Cbeta_0%20-%20%5Csum_%7Bj%3D1%7D%5Ek%20x_%7Bij%7D%20%5Cbeta_j%20%5Cright%29%5E2%20&plus;%20%5Calpha%20%5Csum_%7Bj%3D1%7D%5Ek%20%5Cbeta_j%5E2%20%5Cright%5C%7D" />
 
 Typically, we are not interested in shrinking the mean. Furthermore, coefficients are
 standardized to have zero mean and unit L2 norm. Hence,
 
-<img src="http://latex.codecogs.com/gif.latex?$$\hat{\beta}^{ridge}&space;=&space;\text{argmin}_{\beta}&space;\sum_{i=1}^N&space;(y_i&space;-&space;\sum_{j=1}^k&space;x_{ij}&space;\beta_j)^2$$" title="$$\hat{\beta}^{ridge} = \text{argmin}_{\beta} \sum_{i=1}^N (y_i - \sum_{j=1}^k x_{ij} \beta_j)^2$$" />
+<img src="http://latex.codecogs.com/gif.latex?%5Clarge%20%5Chat%7B%5Cbeta%7D%5E%7Bridge%7D%20%3D%20%5Ctext%7Bargmin%7D_%7B%5Cbeta%7D%20%5Csum_%7Bi%3D1%7D%5EN%20%5Cleft%20%28y_i%20-%20%5Csum_%7Bj%3D1%7D%5Ek%20x_%7Bij%7D%20%5Cbeta_j%20%5Cright%20%29%5E2" /> <img src="http://latex.codecogs.com/gif.latex?%5Clarge%20%5Ctext%7B%20subject%20to%20%7D%20%5Csum_%7Bj%3D1%7D%5Ek%20%5Cbeta_j%5E2%20%3C%20%5Calpha" />
 
-<img src="http://latex.codecogs.com/gif.latex?$$\text{subject&space;to&space;}&space;\sum_{j=1}^k&space;\beta_j^2&space;<&space;\alpha$$" title="$$\text{subject to } \sum_{j=1}^k \beta_j^2 < \alpha$$" />
-
-Note that this is *equivalent* to a Bayesian model <img src="http://latex.codecogs.com/gif.latex?$y&space;\sim&space;N(X\beta,&space;I)$" title="$y \sim N(X\beta, I)$" /> with a
-Gaussian prior on the <img src="http://latex.codecogs.com/gif.latex?$\beta_j$" title="$\beta_j$" />:
-
-<img src="http://latex.codecogs.com/gif.latex?$$\beta_j&space;\sim&space;\text{N}(0,&space;\alpha)$$" title="$$\beta_j \sim \text{N}(0, \alpha)$$" />
+Note that this is *equivalent* to a Bayesian model <img src="http://latex.codecogs.com/gif.latex?%5Clarge%20y%20%5Csim%20N%28X%5Cbeta%2C%20I%29" /> with a
+Gaussian prior on the <img src="http://latex.codecogs.com/gif.latex?%5Clarge%20%5Cbeta_j" />: <img src="http://latex.codecogs.com/gif.latex?%5Clarge%20%5Cbeta_j%20%5Csim%20%5Ctext%7BN%7D%280%2C%20%5Calpha%29" />
 
 The estimator for the ridge regression model is:
 
-<img src="http://latex.codecogs.com/gif.latex?$$\hat{\beta}^{ridge}&space;=&space;(X'X&space;&plus;&space;\alpha&space;I)^{-1}X'y$$" title="$$\hat{\beta}^{ridge} = (X'X + \alpha I)^{-1}X'y$$" />
+<img src="http://latex.codecogs.com/gif.latex?%5Clarge%20%5Chat%7B%5Cbeta%7D%5E%7Bridge%7D%20%3D%20%28X%27X%20&plus;%20%5Calpha%20I%29%5E%7B-1%7DX%27y" />
 
 where `X'` denotes transpose of `X`.
 
@@ -80,15 +76,14 @@ for param in params.T:
 other words, it is generally preferred if we believe many of the features are
 not relevant.
 
-<img src="http://latex.codecogs.com/gif.latex?$$\hat{\beta}^{lasso}&space;=&space;\text{argmin}_{\beta}\left\{\frac{1}{2}\sum_{i=1}^N&space;(y_i&space;-&space;\beta_0&space;-&space;\sum_{j=1}^k&space;x_{ij}&space;\beta_j)^2&space;&plus;&space;\lambda&space;\sum_{j=1}^k&space;|\beta_j|&space;\right\}$$" title="$$\hat{\beta}^{lasso} = \text{argmin}_{\beta}\left\{\frac{1}{2}\sum_{i=1}^N (y_i - \beta_0 - \sum_{j=1}^k x_{ij} \beta_j)^2 + \lambda \sum_{j=1}^k |\beta_j| \right\}$$" />
+<img src="http://latex.codecogs.com/gif.latex?%5Clarge%20%5Chat%7B%5Cbeta%7D%5E%7Blasso%7D%20%3D%20%5Ctext%7Bargmin%7D_%7B%5Cbeta%7D%5Cleft%5C%7B%5Cfrac%7B1%7D%7B2%7D%5Csum_%7Bi%3D1%7D%5EN%20%28y_i%20-%20%5Cbeta_0%20-%20%5Csum_%7Bj%3D1%7D%5Ek%20x_%7Bij%7D%20%5Cbeta_j%29%5E2%20&plus;%20%5Clambda%20%5Csum_%7Bj%3D1%7D%5Ek%20%7C%5Cbeta_j%7C%20%5Cright%5C%7D" />
+
 or, similarly:
 
-<img src="http://latex.codecogs.com/gif.latex?$$\hat{\beta}^{lasso}&space;=&space;\text{argmin}_{\beta}&space;\frac{1}{2}\sum_{i=1}^N&space;(y_i&space;-&space;\sum_{j=1}^k&space;x_{ij}&space;\beta_j)^2$$&space;$$\text{subject&space;to&space;}&space;\sum_{j=1}^k&space;|\beta_j|&space;<&space;\lambda$$" title="$$\hat{\beta}^{lasso} = \text{argmin}_{\beta} \frac{1}{2}\sum_{i=1}^N (y_i - \sum_{j=1}^k x_{ij} \beta_j)^2$$ $$\text{subject to } \sum_{j=1}^k |\beta_j| < \lambda$$" />
+<img src="http://latex.codecogs.com/gif.latex?%5Clarge%20%5Chat%7B%5Cbeta%7D%5E%7Blasso%7D%20%3D%20%5Ctext%7Bargmin%7D_%7B%5Cbeta%7D%20%5Cfrac%7B1%7D%7B2%7D%5Csum_%7Bi%3D1%7D%5EN%20%28y_i%20-%20%5Csum_%7Bj%3D1%7D%5Ek%20x_%7Bij%7D%20%5Cbeta_j%29%5E2%5Ctext%7B%20subject%20to%20%7D%20%5Csum_%7Bj%3D1%7D%5Ek%20%7C%5Cbeta_j%7C%20%3C%20%5Clambda%24%24" />
 
-Note that this is *equivalent* to a Bayesian model <img src="http://latex.codecogs.com/gif.latex?$y&space;\sim&space;N(X\beta,&space;I)$" title="$y \sim N(X\beta, I)$" /> with a
-**Laplace** prior on the <img src="http://latex.codecogs.com/gif.latex?$\beta_j$" title="$\beta_j$" />:
-
-<img src="http://latex.codecogs.com/gif.latex?$$\beta_j&space;\sim&space;\text{Laplace}(\lambda)&space;=&space;\frac{\lambda}{2}\exp(-\lambda|\beta_j|)$$" title="$$\beta_j \sim \text{Laplace}(\lambda) = \frac{\lambda}{2}\exp(-\lambda|\beta_j|)$$" />
+Note that this is *equivalent* to a Bayesian model <img src="http://latex.codecogs.com/gif.latex?%5Clarge%20y%20%5Csim%20N%28X%5Cbeta%2C%20I%29" /> with a
+**Laplace** prior on the <img src="http://latex.codecogs.com/gif.latex?%5Clarge%20%5Cbeta_j" />: <img src="http://latex.codecogs.com/gif.latex?%5Clarge%20%5Cbeta_j%20%5Csim%20%5Ctext%7BLaplace%7D%28%5Clambda%29%20%3D%20%5Cfrac%7B%5Clambda%7D%7B2%7D%5Cexp%28-%5Clambda%7C%5Cbeta_j%7C%29" />
 
 Note how the Lasso imposes sparseness on the parameter coefficients:
 
