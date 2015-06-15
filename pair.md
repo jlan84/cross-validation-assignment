@@ -22,7 +22,9 @@ standardized to have zero mean and unit L2 norm. Hence,
 <img src="http://latex.codecogs.com/gif.latex?%5Clarge%20%5Chat%7B%5Cbeta%7D%5E%7Bridge%7D%20%3D%20%5Ctext%7Bargmin%7D_%7B%5Cbeta%7D%20%5Csum_%7Bi%3D1%7D%5EN%20%5Cleft%20%28y_i%20-%20%5Csum_%7Bj%3D1%7D%5Ek%20x_%7Bij%7D%20%5Cbeta_j%20%5Cright%20%29%5E2" /> <img src="http://latex.codecogs.com/gif.latex?%5Clarge%20%5Ctext%7B%20subject%20to%20%7D%20%5Csum_%7Bj%3D1%7D%5Ek%20%5Cbeta_j%5E2%20%3C%20%5Calpha" />
 
 Note that this is *equivalent* to a Bayesian model <img src="http://latex.codecogs.com/gif.latex?%5Clarge%20y%20%5Csim%20N%28X%5Cbeta%2C%20I%29" /> with a
-Gaussian prior on the <img src="http://latex.codecogs.com/gif.latex?%5Clarge%20%5Cbeta_j" />: <img src="http://latex.codecogs.com/gif.latex?%5Clarge%20%5Cbeta_j%20%5Csim%20%5Ctext%7BN%7D%280%2C%20%5Calpha%29" />
+Gaussian prior on the <img src="http://latex.codecogs.com/gif.latex?%5Clarge%20%5Cbeta_j" />: 
+
+<img src="http://latex.codecogs.com/gif.latex?%5Clarge%20%5Cbeta_j%20%5Csim%20%5Ctext%7BN%7D%280%2C%20%5Calpha%29" />
 
 The estimator for the ridge regression model is:
 
@@ -83,7 +85,9 @@ or, similarly:
 <img src="http://latex.codecogs.com/gif.latex?%5Clarge%20%5Chat%7B%5Cbeta%7D%5E%7Blasso%7D%20%3D%20%5Ctext%7Bargmin%7D_%7B%5Cbeta%7D%20%5Cfrac%7B1%7D%7B2%7D%5Csum_%7Bi%3D1%7D%5EN%20%28y_i%20-%20%5Csum_%7Bj%3D1%7D%5Ek%20x_%7Bij%7D%20%5Cbeta_j%29%5E2%5Ctext%7B%20subject%20to%20%7D%20%5Csum_%7Bj%3D1%7D%5Ek%20%7C%5Cbeta_j%7C%20%3C%20%5Clambda%24%24" />
 
 Note that this is *equivalent* to a Bayesian model <img src="http://latex.codecogs.com/gif.latex?%5Clarge%20y%20%5Csim%20N%28X%5Cbeta%2C%20I%29" /> with a
-**Laplace** prior on the <img src="http://latex.codecogs.com/gif.latex?%5Clarge%20%5Cbeta_j" />: <img src="http://latex.codecogs.com/gif.latex?%5Clarge%20%5Cbeta_j%20%5Csim%20%5Ctext%7BLaplace%7D%28%5Clambda%29%20%3D%20%5Cfrac%7B%5Clambda%7D%7B2%7D%5Cexp%28-%5Clambda%7C%5Cbeta_j%7C%29" />
+**Laplace** prior on the <img src="http://latex.codecogs.com/gif.latex?%5Clarge%20%5Cbeta_j" />: 
+
+<img src="http://latex.codecogs.com/gif.latex?%5Clarge%20%5Cbeta_j%20%5Csim%20%5Ctext%7BLaplace%7D%28%5Clambda%29%20%3D%20%5Cfrac%7B%5Clambda%7D%7B2%7D%5Cexp%28-%5Clambda%7C%5Cbeta_j%7C%29" />
 
 Note how the Lasso imposes sparseness on the parameter coefficients:
 
