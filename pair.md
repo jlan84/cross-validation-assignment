@@ -55,7 +55,6 @@ this parameter via cross-validation.
     params = np.zeros((len(alphas), k))
     for i,a in enumerate(alphas):
         X_data = preprocessing.scale(X)
-        y = Y
         fit = Ridge(alpha=a, normalize=True).fit(X_data, y)
         params[i] = fit.coef_
     
@@ -101,7 +100,6 @@ alphas = np.linspace(0.1, 3)
 params = np.zeros((len(alphas), k))
 for i,a in enumerate(alphas):
     X_data = preprocessing.scale(X)
-    y = Y
     fit = linear_model.Lasso(alpha=a, normalize=True).fit(X_data, y)
     params[i] = fit.coef_
 
