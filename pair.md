@@ -44,8 +44,8 @@ this parameter via cross-validation.
 
 ### Exercise:
 
-1. Fit the same Boston housing dataset but with a Ridge Regression with an `alpha = 0.5` to start
-2. Plot the parameters (coefficients) of the Ridge regression (y-axis) versus the value of the alpha parameter. (There will be as many lines as there are predictors)
+1. Fit the same Boston housing dataset but with a Ridge Regression, use `alpha = 0.5` to start.
+2. Now vary the values of alpha starting at zero. Plot the parameters (coefficients) of the Ridge regression (y-axis) versus the value of the alpha parameter. (There will be as many lines as there are predictors)
 
     ```python
     from sklearn import preprocessing
