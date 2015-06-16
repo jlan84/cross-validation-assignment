@@ -1,7 +1,6 @@
 ## Regularization
 
-1. Now that you have experimented with linear regression we will begin exploring Ridge Regression.
-2. Fit the same Boston housing dataset but with a Ridge Regression with an `alpha = 0.5` to start
+###Now that you have experimented with linear regression we will begin exploring Ridge Regression.
 
 
 **Notice the linear regression is not defined for scenarios where the number of
@@ -45,7 +44,8 @@ this parameter via cross-validation.
 
 ### Exercise:
 
-1. Plot the parameters (coefficients) of the Ridge regression (y-axis) versus the value of the alpha parameter. (There will be as many lines as there are predictors)
+1. Fit the same Boston housing dataset but with a Ridge Regression with an `alpha = 0.5` to start
+2. Plot the parameters (coefficients) of the Ridge regression (y-axis) versus the value of the alpha parameter. (There will be as many lines as there are predictors)
 
 ```python
 from sklearn import preprocessing
@@ -65,9 +65,7 @@ for param in params.T:
 ```
 
 
-### Exercise:
-
-1. Plot the test error and training error curves for Ridge regression with different alpha parameters.
+3. Plot the test error and training error curves for Ridge regression with different alpha parameters.
    Which model would you select based on your test and training curves?
 
 
