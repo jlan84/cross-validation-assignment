@@ -1,6 +1,6 @@
 ## Regularization
 
-###Now that you have experimented with linear regression we will begin exploring Ridge Regression.
+### Now that you have experimented with linear regression we will begin exploring Ridge Regression.
 
 
 **Notice the linear regression is not defined for scenarios where the number of
