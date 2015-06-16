@@ -47,23 +47,22 @@ this parameter via cross-validation.
 1. Fit the same Boston housing dataset but with a Ridge Regression with an `alpha = 0.5` to start
 2. Plot the parameters (coefficients) of the Ridge regression (y-axis) versus the value of the alpha parameter. (There will be as many lines as there are predictors)
 
-```python
-from sklearn import preprocessing
-
-k = X.shape[1]
-alphas = np.linspace(0, 4)
-params = np.zeros((len(alphas), k))
-for i,a in enumerate(alphas):
-    X_data = preprocessing.scale(X)
-    y = Y
-    fit = Ridge(alpha=a, normalize=True).fit(X_data, y)
-    params[i] = fit.coef_
-
-figure(figsize=(14,6))
-for param in params.T:
-    plt.plot(alphas, param)
-```
-
+    ```python
+    from sklearn import preprocessing
+    
+    k = X.shape[1]
+    alphas = np.linspace(0, 4)
+    params = np.zeros((len(alphas), k))
+    for i,a in enumerate(alphas):
+        X_data = preprocessing.scale(X)
+        y = Y
+        fit = Ridge(alpha=a, normalize=True).fit(X_data, y)
+        params[i] = fit.coef_
+    
+    figure(figsize=(14,6))
+    for param in params.T:
+        plt.plot(alphas, param)
+    ```
 
 3. Plot the test error and training error curves for Ridge regression with different alpha parameters.
    Which model would you select based on your test and training curves?
