@@ -2,7 +2,6 @@
 
 ### Now that you have experimented with linear regression we will begin exploring more modern regression methods: Ridge and Lasso.
 
-
 **Notice the linear regression is not defined for scenarios where the number of
 features/parameters exceeds the number of observations. It performs poorly as
 long as the number of samples is not several times the number of features.**
