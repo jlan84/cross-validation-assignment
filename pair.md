@@ -42,15 +42,23 @@ this parameter via cross-validation.
 
 
 ### Exercise:
+For the exercise, load the first 150 rows of the diabetes data as follows:
 
-1. Fit the same Boston housing dataset but with a Ridge Regression, use `alpha = 0.5` to start.
+    ```python
+    from sklearn.datasets import load_diabetes
+    diabetes = load_diabetes
+    X = diabetes.data[:150]
+    y = diabetes.target[:150]
+    ```
+
+1. Fit the diabetes dataset with a Ridge Regression, use `alpha = 5` to start.
 2. Now vary the values of alpha starting at zero. Plot the parameters (coefficients) of the Ridge regression (y-axis) versus the value of the alpha parameter. (There will be as many lines as there are predictors)
 
     ```python
     from sklearn import preprocessing
     
     k = X.shape[1]
-    alphas = np.linspace(0, 4)
+    alphas = np.logspace(-2, 2)
     params = np.zeros((len(alphas), k))
     for i,a in enumerate(alphas):
         X_data = preprocessing.scale(X)
@@ -110,3 +118,5 @@ for param in params.T:
 
 ### Exercise:
 1.  Finally, compare three models:  your chosen Ridge model, your chosen Lasso model, and your chosen Ordinary Least Squares model.
+
+2. What happens if you load the entire diabetes dataset instead of just the first 150 observations? This should give you some insight into cases where regularization is important.
