@@ -11,31 +11,31 @@ this parameter via cross-validation.
 ## Exercise:
 For the exercise, load the first 150 rows of the diabetes data as follows:
 
-    ```python
-    from sklearn.datasets import load_diabetes
-    diabetes = load_diabetes
-    X = diabetes.data[:150]
-    y = diabetes.target[:150]
-    ```
+```python
+from sklearn.datasets import load_diabetes
+diabetes = load_diabetes
+X = diabetes.data[:150]
+y = diabetes.target[:150]
+```
 
 1. Fit the diabetes dataset with a Ridge Regression, use `alpha = 5` to start.
 2. Now vary the values of alpha starting at zero. Plot the parameters (coefficients) of the Ridge regression (y-axis) versus the value of the alpha parameter. (There will be as many lines as there are predictors)
 
-    ```python
-    from sklearn import preprocessing
+```python
+from sklearn import preprocessing
     
-    k = X.shape[1]
-    alphas = np.logspace(-2, 2)
-    params = np.zeros((len(alphas), k))
-    for i,a in enumerate(alphas):
-        X_data = preprocessing.scale(X)
-        fit = Ridge(alpha=a, normalize=True).fit(X_data, y)
-        params[i] = fit.coef_
-    
-    figure(figsize=(14,6))
-    for param in params.T:
-        plt.plot(alphas, param)
-    ```
+k = X.shape[1]
+alphas = np.logspace(-2, 2)
+params = np.zeros((len(alphas), k))
+for i,a in enumerate(alphas):
+    X_data = preprocessing.scale(X)
+    fit = Ridge(alpha=a, normalize=True).fit(X_data, y)
+    params[i] = fit.coef_
+
+figure(figsize=(14,6))
+for param in params.T:
+    plt.plot(alphas, param)
+```
 
 3. Plot the test error and training error curves for Ridge regression with different alpha parameters.
    Which model would you select based on your test and training curves?
