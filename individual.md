@@ -139,7 +139,7 @@ While stepwise regression has its many [critics](http://andrewgelman.com/2014/06
 
 3. Using a `for` loop, generate a series of models that take the top `n` features and calculate the `R^2` score using the `.score()` method.
 
-4. Plot the `R^2` as a function of the number of included features. What does this plot tell you about the number of useful features in your model?
+4. Plot the *Adjusted* `R^2` as a function of the number of included features. What does this plot tell you about the number of useful features in your model?
 
 5. Extra extra credit. Instead of using RFE to do backward selection, create your own `LinearRegression` class that implements sequential forward selection, which involves starting with no variables in the model, testing the addition of each variable using a chosen model comparison criterion, adding the variable (if any) that improves the model the most, and repeating this process until none improves the model.
 
