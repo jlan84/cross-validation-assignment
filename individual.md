@@ -113,13 +113,13 @@ here.
 
 3. Train your model on your constructed training set and evaluate on the given test set
 
-3. Repeat steps __2__ and __3__ _k_ times.
+4. Repeat steps __2__ and __3__ _k_ times.
 
-4. Average your results of your error metric.
+5. Average your results of your error metric.
 
-5. Compare the MSE for your test set in Part 1. and your K-fold cross validated error in `4.`.
+6. Compare the MSE for your test set in Part 1. and your K-fold cross validated error in `4.`.
 
-6. Plot a learning curve and test vs training error curve.
+7. Plot a learning curve and test vs training error curve.
    (You might want to use: [cross_val_score](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.cross_val_score.html) which is scikit-learn's built-in
    function for K-fold cross validation).  See [Illustration of Learning Curves](http://www.astro.washington.edu/users/vanderplas/Astr599/notebooks/18_IntermediateSklearn) for more details.  
 
@@ -130,14 +130,17 @@ While stepwise regression has its many [critics](http://andrewgelman.com/2014/06
 
 1. Generate a series of of `n=5000` samples, `n=100` features, with a `random_seed=0` using the `make_friedman1` dataset like so:
 
-```python
-from sklearn.datasets import make_friedman1
-X, y = make_friedman1(n_samples=5000, n_features=100, random_state=0)
-```
+    ```python
+    from sklearn.datasets import make_friedman1
+    X, y = make_friedman1(n_samples=5000, n_features=100, random_state=0)
+    ```
 
 2. Now, create a `LinearRegression()` object and pass it into the [RFE](http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html) selection algorithm.
+
 3. Using a `for` loop, generate a series of models that take the top `n` features and calculate the `R^2` score using the `.score()` method.
-4. Plot the `R^2` as a function of the number of included features. What does this plot tell you about the number of useful features in your model?
+
+4. Plot the *Adjusted* `R^2` as a function of the number of included features. What does this plot tell you about the number of useful features in your model?
+
 5. Extra extra credit. Instead of using RFE to do backward selection, create your own `LinearRegression` class that implements sequential forward selection, which involves starting with no variables in the model, testing the addition of each variable using a chosen model comparison criterion, adding the variable (if any) that improves the model the most, and repeating this process until none improves the model.
 
 #### Reference
