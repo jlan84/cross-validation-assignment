@@ -69,7 +69,7 @@ for i, a in enumerate(alphas):
     fit = linear_model.Lasso(alpha=a, normalize=True).fit(X_data, y)
     params[i] = fit.coef_
 
-figure(figsize=(14,6))
+fig = plt.figure(figsize=(14,6))
 for param in params.T:
     plt.plot(alphas, param)
 ```
