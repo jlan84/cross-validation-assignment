@@ -1,3 +1,5 @@
+**Include your code and answers in** `pair.py`.
+
 # Regularization
 
 ## Shrinkage
