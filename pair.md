@@ -35,7 +35,7 @@ y = diabetes.target[:150]
         fit = Ridge(alpha=a, normalize=True).fit(X_data, y)
         params[i] = fit.coef_
 
-    figure(figsize=(14,6))
+    fig = plt.figure(figsize=(14,6))
     for param in params.T:
         plt.plot(alphas, param)
     ```
