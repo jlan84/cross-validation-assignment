@@ -1,3 +1,7 @@
+## Miniquiz: Pandas Practice
+
+**Include your code and answers in** `miniquiz.py`.
+
 1. Load the `data1.tsv` into a `pandas` dataframe.  Look at pandas various data [loading functions](http://pandas.pydata.org/pandas-docs/stable/io.html) and pick an appropriate one to use.  Look at it's keyword arguments, they do some pretty powerful things.
 
 You often want to use the quickest/easiest methods first to verify your data and explore in an interactive fashion.  Pandas has great support for statistics to [summarize](http://pandas.pydata.org/pandas-docs/stable/basics.html#descriptive-statistics) our data and working with [missing values](http://pandas.pydata.org/pandas-docs/stable/missing_data.html).
@@ -15,9 +19,9 @@ A few missing values may not be a huge problem, but many might be systematic of 
 * Or just ignore them and hope your analysis/model can handle them
 
 This is often a subjective decision you have to make as the data scientist.  There is no _right_ answer to handling missing data.  And because of such the following questions may not have a concrete answer.
-1. Which columns have missing values that it is probably ok to drop/ignore?
-2. Which columns have values that you cannot (should not) ignore (because there might be too many)?  Why might there be so many for this column(s)?
-3. Are there any missing/NA values that may not actually be missing but just represent a different value?
+   1. Which columns have missing values that it is probably ok to drop/ignore?
+   2. Which columns have values that you cannot (should not) ignore (because there might be too many)?  Why might there be so many for this column(s)?
+   3. Are there any missing/NA values that may not actually be missing but just represent a different value?
 
 Missing data isn't the only source of data quality issues. Outliers and invalid values (i.e. an age that is negative) that are out of the expected range of values should also be checked.
 
