@@ -15,7 +15,7 @@ For the exercise, load the first 150 rows of the diabetes data as follows:
 
 ```python
 from sklearn.datasets import load_diabetes
-diabetes = load_diabetes
+diabetes = load_diabetes()
 X = diabetes.data[:150]
 y = diabetes.target[:150]
 ```
