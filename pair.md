@@ -7,8 +7,8 @@
 The regularization of the ridge is a *shrinkage*: the coefficients learned are shrunk towards zero.
 
 The amount of regularization is set via the `alpha` parameter of the ridge,
-which is tunable. The `RidgeCV` class in `scikits-learn` automatically tunes
-this parameter via cross-validation.
+which is tunable. We'll use the `Ridge` class to start, but the `RidgeCV` class
+in `scikits-learn` automatically tunes this parameter via cross-validation.
 
 ## Exercise:
 For the exercise, load the first 150 rows of the diabetes data as follows:
