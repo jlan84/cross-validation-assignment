@@ -119,9 +119,9 @@ here.
 
 6. Compare the MSE for your test set in Part 1. and your K-fold cross validated error in `4.`.
 
-7. Plot learning curves for train and test error.
+7. Plot the learning curve across varying training sizes.
    (You might want to use: [cross_val_score](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.cross_val_score.html) which is scikit-learn's built-in
-   function for K-fold cross validation).  See [Illustration of Learning Curves](http://www.astro.washington.edu/users/vanderplas/Astr599/notebooks/18_IntermediateSklearn) for more details.  
+   function for K-fold cross validation).  See [Illustration of Learning Curves](http://www.astro.washington.edu/users/vanderplas/Astr599/notebooks/18_IntermediateSklearn) (the last example on the page) for more details.  
 
 
 ### Part 3: Stepwise Regression (Extra Credit)
@@ -145,4 +145,4 @@ While stepwise regression has its many [critics](http://andrewgelman.com/2014/06
 
 #### Reference
 
-* [Stepwise Regression Procedure](https://onlinecourses.science.psu.edu/stat501/node/88)
+* [Stepwise Regression Procedure](https://onlinecourses.science.psu.edu/stat501/node/329)
