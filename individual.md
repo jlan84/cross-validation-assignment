@@ -40,7 +40,7 @@ interested in.
     - NOX      nitric oxides concentration (parts per 10 million)
     - RM       average number of rooms per dwelling
     - AGE      proportion of owner-occupied units built prior to 1940
-    - DIS      weighted distances to five Boston employment centres
+    - DIS      weighted distances to five Boston employment centers
     - RAD      index of accessibility to radial highways
     - TAX      full-value property-tax rate per $10,000
     - PTRATIO  pupil-teacher ratio by town
@@ -126,7 +126,7 @@ here.
 
 ### Part 3: Stepwise Regression (Extra Credit)
 
-While stepwise regression has its many [critics](http://andrewgelman.com/2014/06/02/hate-stepwise-regression/), it is a useful exercise to introduce the concept of feature selection in the context of linear regression. This extra credit exercise has two components of different difficulties. First, use the `scikit-learn` reverse feature elimation (a greedy feature elimination algorithm) to implement something similar to sequential backward selection. The second, more difficult part is implementing sequential forward selection.
+While stepwise regression has its many [critics](http://andrewgelman.com/2014/06/02/hate-stepwise-regression/), it is a useful exercise to introduce the concept of feature selection in the context of linear regression. This extra credit exercise has two components of different difficulties. First, use the `scikit-learn` reverse feature elimination (a greedy feature elimination algorithm) to implement something similar to sequential backward selection. The second, more difficult part is implementing sequential forward selection.
 
 1. Generate a series of of `n=5000` samples, `n=100` features, with a `random_seed=0` using the `make_friedman1` dataset like so:
 
