@@ -19,14 +19,14 @@ We can see the different ways that our data can be off in terms of bias and vari
 Imagine this scenario: *If I were to take lots of different random samples of the data from my population, what would all the models look like?*
 
 * **Bias:** Is the average of the residuals of the models close to the true model?
-    - A *biased* model would center around the incorrect solution. How you collect data can lead to bias (for example, you only get user data from San Francisco and try to use your model for your whole userbase).
+    - A *biased* model would center around the incorrect solution. How you collect data can lead to bias (for example, you only get user data from San Francisco and try to use your model for your whole user base).
     - High bias can also come from *underfitting*, i.e., not fully representing the data you are given.
 
 * **Variance:** Are all the models close together?
     - The main contributor to high variance is insufficient data or that what you're trying to predict isn't actually correlated to your features.
     - High variance is also a result of *overfitting* to your sample dataset.
 
-To see the bais variance tradeoff visually:
+To see the bias variance tradeoff visually:
 
 ![bias variance](images/bias_variance.png)
 
@@ -88,9 +88,9 @@ We also will sometimes use MSE, which the *mean squared error*.
 Notes:
 
 * Ordering by R^2 is equivalent to ordering by RSS, which is equivalent to ordering by MSE. The model with the highest R^2 also has the lowest RSS and the lowest MSE.
-* We often will use RSS as our metric. MSE has the advantage that it is normalized by the number of datapoints. R^2 has the benefit that it is normalized to be from 0 to 1.
+* We often will use RSS as our metric. MSE has the advantage that it is normalized by the number of data points. R^2 has the benefit that it is normalized to be from 0 to 1.
 
-Note that R^2 will improve (increase) as we add more predictors and encourage overfitting. There are some additonal metrics that we can use that will penalize number of features.
+Note that R^2 will improve (increase) as we add more predictors and encourage overfitting. There are some additional metrics that we can use that will penalize number of features.
 
 **Adjusted R^2**, **AIC** and **BIC** are defined as follows:
 
@@ -168,7 +168,7 @@ A validation (or hold out) set is a random sample of our data that we reserve fo
 
 #### Leave One Out Cross Validation (LOOCV)
 
-Here we build as many models are there are datapoints! We take each of the datapoints out of out dataset, build the model with the rest of the data, and then calculate the MSE on the single datapoint.
+Here we build as many models are there are data points! We take each of the data points out of out dataset, build the model with the rest of the data, and then calculate the MSE on the single data point.
 
 Here are all the models you need to build. The blue part is the training set, and the yellow point is the test point.
 
@@ -176,7 +176,7 @@ Here are all the models you need to build. The blue part is the training set, an
 
 We can then calculate the total MSE.
 
-* We build *n* models, each on *n-1* datapoints and calculate the MSE on the 1 remaining datapoint.
+* We build *n* models, each on *n-1* data points and calculate the MSE on the 1 remaining data point.
 * Concerns:
     - Computationally expensive. This is a lot of models to build!
     - High variance. Since the test sets are so small, we will see a large variance in the error that we calculate.
@@ -221,7 +221,7 @@ Recall our standard linear regression cost function. We find the beta coefficien
 
 ### Ridge Regularization
 
-*Ridge Regulization* is also called *L2 Regularization* since it uses the L2 norm.
+*Ridge Regularization* is also called *L2 Regularization* since it uses the L2 norm.
 
 Here is our new cost function:
 
@@ -232,7 +232,7 @@ The second term here is the *shrinkage penalty*. Lambda here is an example of a 
 * If we increase lambda, the variance will decrease and the bias will increase.
 * Lambda=0 is the same as standard Linear Regression.
 
-Squaring the error is nice for differentiability purposes, but it might be too harse of a penalty. This leads us to *Lasso*.
+Squaring the error is nice for differentiability purposes, but it might be too harsh of a penalty. This leads us to *Lasso*.
 
 ### Lasso Regularization
 
@@ -252,7 +252,7 @@ This can be seen with the following picture.
 
 ![Ridge vs Lasso](images/ridge_vs_lasso.png)
 
-Note that if we fix the shrinkage penalty, with Lasso, we have a diamond and with Ridge we have a circle. As we minimize the RSS, we are more likely to hit Lasso at a corner (where one of the coeffients is 0), than we are to hit in the middle. All points are equally likely with Ridge.
+Note that if we fix the shrinkage penalty, with Lasso, we have a diamond and with Ridge we have a circle. As we minimize the RSS, we are more likely to hit Lasso at a corner (where one of the coefficients is 0), than we are to hit in the middle. All points are equally likely with Ridge.
 
 This property often makes Lasso appealing, since we will actually remove features rather than just having some features with small beta coefficients.
 
