@@ -9,7 +9,7 @@ used
 Today we will be using [sklearn](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html).
 [numpy](docs.­scipy.­org/­doc/­numpy/­reference/­generated/­numpy.­polyfit.­html) and
 [scipy](http://docs.scipy.org/doc/scipy-0.13.0/reference/generated/scipy.stats.linregress.html)
-also have implmentations.
+also have implementations.
 
 Resources:
 * [sklearn documentation](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)
