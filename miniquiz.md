@@ -14,7 +14,7 @@ A few missing values may not be a huge problem, but many might be systematic of 
 * [Fill N/A](http://pandas.pydata.org/pandas-docs/stable/missing_data.html#cleaning-filling-missing-data) values with:
     * Average of column
     * 0 or other neutral number
-    * Fill Forward to Fill backward (especially for timeseries)
+    * Fill Forward to Fill backward (especially for time series)
     * Interpolation
 * Or just ignore them and hope your analysis/model can handle them
 
