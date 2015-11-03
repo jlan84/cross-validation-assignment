@@ -5,7 +5,7 @@ Cross validation and regularized regression.
 
 ## Lecture
 
-* [Lecture slides](lecture.pdf)
+* [Lecture slides](lectures/lecture.pdf)
 * [Extra summary notes](notes.md)
 
 ## Exercise
