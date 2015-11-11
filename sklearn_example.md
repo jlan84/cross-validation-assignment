@@ -137,5 +137,3 @@ predicted_y = regr.predict(X_test)
 Here's sklearn's [example](http://scikit-learn.org/stable/auto_examples/linear_model/plot_polynomial_interpolation.html). They use a `pipeline` to make the code a little simpler (with the same functionality).
 
 In `numpy`, you can use the `polyfit` function ([documentation](http://docs.scipy.org/doc/numpy/reference/generated/numpy.polyfit.html)).
-
-The discussion below will give insight into how to determine which degree of polynomial to pick.
