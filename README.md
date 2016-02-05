@@ -5,8 +5,7 @@ Cross validation and regularized regression.
 
 ## Lecture
 
-* [Lecture slides](lectures/tammy_lecture.pdf)
-* [Extra summary notes](notes.md)
+* [Extra summary notes](https://github.com/zipfian/DSI_Lectures/tree/master/regularized-regression/notes/notes.md)
 
 ## Exercise
 
