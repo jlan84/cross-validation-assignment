@@ -100,27 +100,25 @@ Here we will implement K-fold validation **on the training dataset**.
 `sklearn` has its own implementation of K-fold
 (`sklearn.cross_validation_cross_val_score()`).
 However, to ensure you have an understanding of K-fold, you will implement it
-here.
+here. Your own implementation should:
 
-<br>
+1. Randomly split the dataset into **k** folds.  You may use sklearn's `KFold` class if you'd like.
 
-1. To do this you need to manage randomly sampling **k** folds.
+2. For each fold:
+  1. train the model with the (k-1) _other_ folds,
+  2. use the trained model to predict the target values of each example in the current fold,
+  3. calculate the MSE of the current fold's predicted values,
+  4. store the MSE for this fold.
 
-2. Properly combining those **k** folds into a test and training set on
-   your **on the training dataset**. Outside of the k-fold, there should be
-   another set which will be referred to as the **hold-out set**.
+3. Average the **k** results of your error metric. Return the average error metric.
 
-3. Train your model on your constructed training set and evaluate on the given test set
+Now, use the code you just wrote to compute the k-fold cross validation score (use k=10 and train a LinearRegression model on the Boston data).
 
-4. Repeat steps __2__ and __3__ _k_ times.
+Compare the k-fold cross validation score you just computed with the MSE for your test set in Part 1.
 
-5. Average your results of your error metric.
-
-6. Compare the MSE for your test set in Part 1. and your K-fold cross validated error in `4.`.
-
-7. Plot the learning curve across varying training sizes.
+To get a feel for how the size of the training set affects performance, do k-fold cross validation where you limit the training set size by varying amounts. Plot the learning curve (MSE in this case) across varying training set sizes.
    (You might want to use: [cross_val_score](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.cross_val_score.html) which is scikit-learn's built-in
-   function for K-fold cross validation).  See [Illustration of Learning Curves](http://www.astro.washington.edu/users/vanderplas/Astr599/notebooks/18_IntermediateSklearn) (the last example on the page) for more details.  
+   function for K-fold cross validation.)
 
 
 ### Part 3: Stepwise Regression (Extra Credit)
