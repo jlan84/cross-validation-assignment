@@ -72,7 +72,7 @@ interested in.
    test_predicted = linear.predict(test_feature)
    ```
 
-4. Write a function that takes the `target` and the `predicted` and calculate
+4. Write a function that takes the `target` and the `predicted` and calculates
    the **MSE for the training data and the test data**. Use
    `sklearn.metrics.mean_squared_error()` to confirm your results.
 
@@ -84,7 +84,7 @@ interested in.
 ## Part 2: K-fold Cross Validation
 
 In K-fold cross validation, the data is split into **k** groups. One group
-out of the k groups will be the test set, the rest (**k-1**) groups will
+out of the k groups will be the test set, the rest of the (**k-1**) groups will
 be the training set. In the next iteration, another group will be the test set,
 and the rest will be the training set. The process repeats for k iterations (k-fold).
 In each fold, a metric for accuracy (MSE in this case) will be calculated and
