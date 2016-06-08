@@ -10,7 +10,7 @@ The amount of regularization is set via the `alpha` parameter of the ridge,
 which is tunable. We'll use the `Ridge` class to start, but the `RidgeCV` class
 in `scikits-learn` automatically tunes this parameter via cross-validation.
 
-## Exercise:
+## Ridge:
 For the exercise, load the first 150 rows of the diabetes data as follows:
 
 ```python
