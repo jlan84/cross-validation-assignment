@@ -26,7 +26,9 @@ y = diabetes.target[:150]
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
 ```
 
-1. Fit the diabetes dataset with a Ridge Regression, use `alpha = 0.5` to start, and calcualate the MSE.
+*Note that we are using only a subset* of the dataset since regularization has less effect with the larger dataset. We are emulating the situation where we were only able to collect a small sample.
+
+1. Fit the diabetes dataset with a Ridge Regression, use `alpha = 0.5` to start.
 
 2. Now vary the values of alpha starting at zero. Plot the parameters (coefficients) of the Ridge regression (y-axis) versus the value of the alpha parameter. (There will be as many lines as there are predictors)
 
