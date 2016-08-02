@@ -71,7 +71,7 @@ How we deal with the **train** portion of the original data set will be the focu
 
 ## Part 2: Train and Test Split Only (Bad Option)
 
-The reason this option is considered a poor chioce is two-fold: 1) High Variance - The split into a train and test set could be divided in such as way that the training set is not representative of the test set. This results in a model that does not generalize well to unseen data. 2) No validation set for model tuning - We normally want to compare a few different models and perform what is referred to as 'hyper-parameter' tuning. Without a validation set, we must use the test set for this purpose, which corrupts our results since we're now just building a model to match our test set.
+The reason this option is considered a poor chioce is two-fold: 1) High Variance - The split into a train and test set could randomly be such that the training set is not representative of the test set. This could mean our estimate of the performance of our model is wrong because the test set is unlike other data we will see. 2) No validation set for model tuning -- If we want to iterate on our model (for hyper-parameter optimization, or variable selection) on the basis of its test-set performance we can use the test set for this purpose, but without a validation set, we can't get an estimate of how our model will perform on truly unseen data, because the model has been able to "see" the test set. As a result estimates of the performance of the model are likely to be _optimistic_ when calculated based on training data for which the model has been selected to perform as well as possible.
 
 1. Since we already split the original data set on Part 1, we'll train our model on the training set only. 
 
