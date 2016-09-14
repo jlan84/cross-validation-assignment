@@ -1,7 +1,7 @@
 ## Introduction
 
 Spend some time understanding the image below, specifically how changing alpha effects the constraint region and bias/variance of a model.
-- What happens to the constriant region (in blue) if we set alpha to 1,000,000? 
+- What happens to the constraint region (in blue) if we set alpha to 1,000,000? 
 - What happens to the constraint region if we set alpha to zero?
 - What happens to bias and variance as we vary alpha in both cases above?
 
