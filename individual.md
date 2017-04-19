@@ -27,9 +27,9 @@ How we deal with the **train** portion of the original data set will be the focu
 
    ```python
    from sklearn.linear_model import LinearRegression
-   from sklearn.cross_validation import KFold
-   from sklearn.cross_validation import train_test_split
-   from sklearn.cross_validation import cross_val_score
+   from sklearn.model_selection import KFold
+   from sklearn.model_selection import train_test_split
+   from sklearn.model_selection import cross_val_score
    import numpy as np
    from sklearn.datasets import load_boston
    ```
