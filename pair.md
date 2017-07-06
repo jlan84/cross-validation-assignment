@@ -62,7 +62,7 @@ not relevant.
 
 1. Plot the parameters (coefficients) of the LASSO regression (y-axis) versus the value of the alpha parameter.
 
-2. Make a plot of the training error and the testing error as a function of the alpha parameter.
+2. Make a plot of the training error and the validation error as a function of the alpha parameter.
 
 3. Select a model based on the validation and training error curves.
 
