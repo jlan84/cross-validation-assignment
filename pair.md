@@ -48,8 +48,8 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
         plt.plot(alphas, param)
     ```
 
-3. Plot the test error and training error curves for Ridge regression with different alpha parameters.
-   Which model would you select based on your test and training curves?
+3. Plot the validation error and training error curves for Ridge regression with different alpha parameters.
+   Which model would you select based on your  validation and training curves?
 
 
 
@@ -64,7 +64,7 @@ not relevant.
 
 2. Make a plot of the training error and the testing error as a function of the alpha parameter.
 
-3. Select a model based on the test and training error curves.
+3. Select a model based on the validation and training error curves.
 
 
 ```python
