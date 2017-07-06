@@ -65,7 +65,7 @@ How we deal with the **train** portion of the original data set will be the focu
    There is no rule on train-test splits.  Below we use a 75 : 25 split.
 
    ```python
-   X_train, X_test, y_train, y_test = train_test_split()
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25)
    ```
 
 
