@@ -26,7 +26,7 @@ This is the general workflow for working with sklearn. Any algorithm we use from
 ```python
 import pandas as pd
 from sklearn.linear_model import LinearRegression
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 
 # Load data from csv file
 df = pd.read_csv('data/housing_prices.csv')
