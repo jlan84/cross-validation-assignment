@@ -56,8 +56,8 @@ You should call the `fit` method once. Here you give it the training data and it
 Here's an example using kfold:
 
 ```python
-from sklearn import cross_validation
-kf = cross_validation.KFold(X.shape[0], n_folds=5, shuffle=True)
+from sklearn import model_selection
+kf = model_selection.KFold(X.shape[0], n_folds=5, shuffle=True)
 results = []
 for train_index, test_index in kf:
     regr = LinearRegression()
@@ -111,7 +111,7 @@ In `sklearn`, you should use `PolynomialFeatures` for generating these additiona
 import pandas as pd
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 
 # Load data is identical as above
 df = pd.read_csv('data/housing_prices.csv')
