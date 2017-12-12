@@ -8,9 +8,11 @@ We're going to use a classic regression dataset for this example.
 
 1. Load the diabetes data from sklearn using the instructions in the [sklearn documentation](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_diabetes.html).
 
-2. Take an initial look at the data and investigate what the predictors mean.  You may have to do some detective work with google.
+2. Some of the work at the end of this assignment will be very computationally heavy, so we will subset our data to make this work more approachable.  Take the first 100 rows from the diabetes data and target to use as your raw data in this assignment.
 
-3. Do some basic EDA.  Check for missing values, and plot the univariate and joint distributions of the predictors and target.  Make any sensible changes to the data based on what you discover in your explorations.
+3. Take an initial look at the data and investigate what the predictors mean.  You may have to do some detective work with google.
+
+4. Do some basic EDA.  Check for missing values, and plot the univariate and joint distributions of the predictors and target.  Make any sensible changes to the data based on what you discover in your explorations.
 
 ## Part 2: Ridge Regression
 
@@ -186,4 +188,6 @@ def booststrap_cv(X, y, model, alphas, n_bootstraps=100, n_folds=10, **kwargs):
 
 Fill in the code for this function and bootstrap your process for both ridge and LASSO regression.  Then plot a histogram of the bootstrapped test MSE's to determine which regression method is better for this data.
 
-Use a small number of bootstrap samples for now, as this is a very compute intensive process.  For definitive results, run it with 10000 bootstrap samples overnight.
+Use a small number of bootstrap samples for now, as this is a very compute intensive process.  For definitive results, run it with 10000 bootstrap samples overnight.  If you do so, **make sure your computer is plugged into a power source!**
+
+You may also wish to re-run your analaysis on the **full** diabetes data, you may find some interesting results!
