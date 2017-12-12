@@ -1,89 +1,185 @@
 ## Introduction
 
-Spend some time understanding the image below, specifically how changing alpha effects the constraint region and bias/variance of a model.
-- What happens to the constraint region (in blue) if we set alpha to 1,000,000? 
-- What happens to the constraint region if we set alpha to zero?
-- What happens to bias and variance as we vary alpha in both cases above?
+In this assignment we will be comparing regularization methods on a well known dataset that is built into sklearn.
 
-<div align="center">
-    <img height="500" src="images/ridge_vs_lasso_updated.png">
-</div>
+## Part 1: Loading The Data
 
+We're going to use a classic regression dataset for this example.
 
-## Part 1: Ridge (Shrinkage)
+1. Load the diabetes data from sklearn using the instructions in the [sklearn documentation](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_diabetes.html).
 
-**Include your code and answers in** `pair.py`.
+2. Take an initial look at the data, and investigate what the predictors mean.  You may have to do some detective work with google.
 
-The regularization of the ridge is a *shrinkage*: the coefficients learned are shrunk towards zero. The amount of regularization is set via the `alpha` parameter of the ridge, which is tunable. We'll use the `Ridge` class to start, but the `RidgeCV` class in `scikits-learn` automatically tunes this parameter via cross-validation.
+3. Do some basic EDA.  Check for missing values, plot the univariate and joint distributions of the predictors and target.  Make any sensible changes to the data implied by your explorations.
 
-For the exercise, load the first 150 rows of the diabetes data as follows:
+## Part 2: Ridge Regression
+
+Ridge regularization is a form of *shrinkage*: the parameter estimates are shrunk towards zero compared to the estimates from an unregularized regression. The amount of regularization is set via the `alpha` parameter `Ridge`, which needs to be tuned with cross-validation. 
+
+We'll use the `Ridge` class to start, but the `RidgeCV` class in `scikits-learn` automatically tunes this parameter with a built in cross-validation.  
+
+1. Split the full data into a training and testing set.  The training set will be used to fit and tune all your models, and the testing set will be used only at the very end to compare final models.
+
+2. Fit a ridge regression with `alpha = 0.5` to your training dataset.  Use the fit model to generate predictions on your testing dataset.  Calculate the MSE of your fit model on the test set.  This is just to get used to creating a `Ridge` object and fitting the model.
+
+3. Estimate the out of sample error of your alpha=0.5 ridge regression using 10-fold cross validation.  Remember that your predictors and response *must* be standardized when using ridge regression, and that this standardization must happen inside of the cross validation!  Your code should look something like this:
 
 ```python
-from sklearn.datasets import load_diabetes
-diabetes = load_diabetes()
-X = diabetes.data[:150]
-y = diabetes.target[:150]
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+kf = KFold(n_splits=n_folds, random_state=random_seed)
+test_cv_errors, train_cv_errors = np.empty(n_folds), np.empty(n_folds)
+for idx, (train, test) in enumerate(kf.split(X_train)):
+    # Split into train and test
+    ...
+    # Standardize data.
+    ...
+    # Fit ridge regression to training data
+    ...
+    # Make predictions
+    ...
+    # Calclate MSE
+    ...
+    # Record the MSE in a numpy array
+    ...
 ```
 
-*Note that we are using only a subset* of the dataset since regularization has less effect with the larger dataset. We are emulating the situation where we were only able to collect a small sample.
+To make the task of standardizing both the predictor and response more seamless, we have provided an `XyStandardizer` class in `utils.py`.
 
-1. Fit the diabetes dataset with a Ridge Regression, use `alpha = 0.5` to start.
+4. Wrap your cross validation code from above into a function:
 
-2. Now vary the values of alpha starting at zero. Plot the parameters (coefficients) of the Ridge regression (y-axis) versus the value of the alpha parameter. (There will be as many lines as there are predictors)
-
-    ```python
-    from sklearn import preprocessing
+```python
+def cv(X, y, base_estimator, n_folds, random_seed=154):
+    """Estimate the in and out-of-sample error of a model using cross validation.
     
-    k = X.shape[1]
-    alphas = np.logspace(-2, 2)
-    params = np.zeros((len(alphas), k))
-    for i,a in enumerate(alphas):
-        X_data = preprocessing.scale(X)
-        fit = Ridge(alpha=a, normalize=True).fit(X_data, y)
-        params[i] = fit.coef_
+    Parameters
+    ----------
+    
+    X: np.array
+      Matrix of predictors.
+      
+    y: np.array
+      Target array.
+      
+    base_estimator: sklearn model object.
+      The estimator to fit.  Must have fit and predict methods.
+      
+    n_folds: int
+      The number of folds in the cross validation.
+      
+    random_seed: int
+      A seed for the random number generator, for repeatability.
+    
+    Returns
+    -------
+      
+    train_cv_errors, test_cv_errors: tuple of arrays
+      The training and testing errors for each fold of cross validation.
+    """
+```
 
-    fig = plt.figure(figsize=(14,6))
-    for param in params.T:
-        plt.plot(alphas, param)
-    ```
+5. Vary the values of alpha starting at zero. Compute the training and testing errors for each value of alpha using ten-fold cross validation.
 
-3. Plot the validation error and training error curves for Ridge regression with different alpha parameters.
-   Which model would you select based on your  validation and training curves?
+To do this, it's best to write another function:
 
+```python
+def train_at_various_alphas(X, y, model, alphas, n_folds=10, **kwargs):
+    """Train a regularized regression model using cross validation at various values of alpha.
+    
+    Parameters
+    ----------
+    
+    X: np.array
+      Matrix of predictors.
+      
+    y: np.array
+      Target array.
+      
+    model: sklearn model class
+      A class in sklearn that can be used to create a regularized regresison object.  Options are `Ridge` and `Lasso`.
+      
+    alphas: numpy array
+      An array of regularization parameters.
+      
+    n_folds: int
+      Number of cross validation folds.
+      
+    Returns
+    -------
+    
+    cv_errors_train, cv_errors_test: tuple of DataFrame
+      DataFrames containing the training and testing errors for each value of 
+      alpha and each cross validation fold.  Each row represents a CV fold,
+      and each column a value of alpha.
+    """
+    cv_errors_train = pd.DataFrame(np.empty(shape=(n_folds, len(alphas))),
+                                     columns=alphas)
+    cv_errors_test = pd.DataFrame(np.empty(shape=(n_folds, len(alphas))),
+                                        columns=alphas)
+    for alpha in alphas:
+       # ...
+    return cv_errors_train, cv_errors_test
+```
 
+Which you can call like this:
+
+```python
+ridge_alphas = np.logspace(-2, 4, num=250)
+
+ridge_cv_errors_train, ridge_cv_errors_test = train_at_various_alphas(
+    X_train, y_train, Ridge, ridge_alphas)
+```
+
+6. Plot the cross validation average training and testing MSE curves as alpha varies (the plot will look better if you use log(\alpha) on the horizontal axis).  
+
+7. Compute the value of alpha that leads to the minimum CV test error.
+
+8. Fit a sequence of ridge regression models to the full training data for the same sequence of alpha's as above, then plot the coefficient paths as a function of log(alpha).  Superimpose a vertical line at the optimal value of alpha as chosen by cross validation.
 
 ## Part 2: Lasso
 
 **The Lasso estimator** is useful for imposing sparsity on the coefficients. In
-other words, it is generally preferred if we believe many of the features are
-not relevant.
+other words, it is preferred if we believe many of the features are not at all relevant to predicting the target.
 
+Repeat the sequence you followed for `Ridge`, but using the `Lasso` class from sklearn.  You will need to use a different sequence of alpha values for good results.
 
-1. Plot the parameters (coefficients) of the LASSO regression (y-axis) versus the value of the alpha parameter.
+## Part 3: Model Comparison
 
-2. Make a plot of the training error and the validation error as a function of the alpha parameter.
+1. Fit a final ridge regression and LASSO regression to your full training set using the values of alpha you found as optimal using cross validation.  Compute the MSE of these models on your held out test set.
 
-3. Select a model based on the validation and training error curves.
+For comparison, also fit an unregularized linear regression and compute it's MSE on the test set.
 
+## Part Extra: Quantifying Variation
+
+You probably noticed that the results from our final comparison of three models is too close to call. The bootstrap is a useful tool in these situations.
+
+The idea in using the bootstrap here is to wrap our *entire process* in an outer bootstrap loop.  So we would:
+
+  - Begin by taking a bootstrap sample from our entire dataset
+  - Then split this bootsrap sample into training and testing sets
+  - Then use ten fold CV on the training set to estimate an optimal regularization parameter
+  - Then refit the model on the entire training set using this optimal parameter
+  - Then score the resulting model on the held out test set
+
+This process is repeated many times for different bootstrap samples of the data.  After it is completed, we will have an array of estimates of the testing error for our process, which we can compare for different models (say comparing ridge vs. lasso regression).  This will help us choose without the fear that we chose a train-test split that benefits one or the other model.
 
 ```python
-k = X.shape[1]
-alphas = np.linspace(0.1, 3)
-params = np.zeros((len(alphas), k))
-for i, a in enumerate(alphas):
-    X_data = preprocessing.scale(X)
-    fit = linear_model.Lasso(alpha=a, normalize=True).fit(X_data, y)
-    params[i] = fit.coef_
-
-fig = plt.figure(figsize=(14,6))
-for param in params.T:
-    plt.plot(alphas, param)
+def booststrap_cv(X, y, model, alphas, n_bootstraps=100, n_folds=10, **kwargs):
+    test_errors = np.empty(n_bootstraps)
+    for idx in range(n_bootstraps):
+        X_boot, y_boot = resample(X, y)
+	# Split into train and test
+	# ...
+	# Fit a range of models with cross validation on the train data
+	# ...
+	# Compute the optimal alpha using the CV estimates
+	# ...
+	# Fit the model with optimal alpha to the entire training data
+	# ...
+	# Calculate the MSE of the final model using the test data
+	# ...
+    return test_errors
 ```
 
+Fill in the code for this function and bootstrap your process for both ridge and LASSO regression.  Then plot a histogram of the bootstrapped test MSE's to determine which regression method is better for this data.
 
-## Part 3: Tying It All Together:
+Use a small number of bootstrap samples for now, as this is a very compute intensive process.  For definitive results, run it with 10000 bootstrap samples overnight.
 
-1. Finally, compare three models:  your chosen Ridge model, your chosen Lasso model, and your chosen Ordinary Least Squares model.
-
-2. What happens if you load the entire diabetes dataset instead of just the first 150 observations? This should give you some insight into cases where regularization is important.
