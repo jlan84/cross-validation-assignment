@@ -190,4 +190,4 @@ Fill in the code for this function and bootstrap your process for both ridge and
 
 Use a small number of bootstrap samples for now, as this is a very compute intensive process.  For definitive results, run it with 10000 bootstrap samples overnight.  If you do so, **make sure your computer is plugged into a power source!**
 
-You may also wish to re-run your analaysis on the **full** diabetes data, you may find some interesting results!
+You may also wish to re-run your analysis on the **full** diabetes data, you may find some interesting results!
