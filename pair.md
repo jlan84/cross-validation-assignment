@@ -1,3 +1,5 @@
+# Regularization Pair Assignment
+
 ## Introduction
 
 In this assignment we will be comparing regularization methods on a well known dataset that is built into sklearn.
