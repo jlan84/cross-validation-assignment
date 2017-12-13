@@ -135,7 +135,7 @@ ridge_cv_errors_train, ridge_cv_errors_test = train_at_various_alphas(
     X_train, y_train, Ridge, ridge_alphas)
 ```
 
-6. Average your ten estimates of training and testing error for each alpha to get a more stable estimate of the training and testing error for each value of the regularization parameter.Plot the average training and testing MSE curves as alpha varies (the plot will look better if you use log(\alpha) on the horizontal axis).  
+6. Average your ten estimates of training and testing error for each alpha to get a more stable estimate of the training and testing error for each value of the regularization parameter. Plot the average training and testing MSE curves as alpha varies (the plot will look better if you use log(\alpha) on the horizontal axis).  
 
 7. Compute the value of alpha that leads to the minimum CV test error, then superimpose a vertical line at the optimal value of alpha onto your plot of the MSE curves.
 
@@ -143,7 +143,7 @@ ridge_cv_errors_train, ridge_cv_errors_test = train_at_various_alphas(
 
 ## Part 2: Lasso
 
-**The Lasso estimator** is useful for imposing sparsity on the coefficients. In
+**LASSO Regression** is useful for imposing sparsity on the coefficients. In
 other words, it is preferred if we believe many of the features are not at all relevant to predicting the target.
 
 Repeat the sequence you followed for `Ridge`, but using the `Lasso` class from sklearn.  You will need to use a different sequence of alpha values for good results.
