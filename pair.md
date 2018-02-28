@@ -46,13 +46,13 @@ for idx, (train, test) in enumerate(kf.split(X_train)):
     ...
 ```
 
-To make the task of standardizing both the predictor and response more seamless, we have provided an `XyStandardizer` class in `utils.py`.
+To make the task of standardizing both the predictor and response more seamless, we have provided an `XyScaler` class in `utils.py`.
 
 4. Wrap your cross validation code from above into a function:
 
 ```python
 def cv(X, y, base_estimator, n_folds, random_seed=154):
-    """Estimate the in and out-of-sample error of a model using cross
+    """Estimate the in- and out-of-sample error of a model using cross
     validation.
     
     Parameters
@@ -100,7 +100,7 @@ def train_at_various_alphas(X, y, model, alphas, n_folds=10, **kwargs):
       Target array.
       
     model: sklearn model class
-      A class in sklearn that can be used to create a regularized regresison
+      A class in sklearn that can be used to create a regularized regression
       object.  Options are `Ridge` and `Lasso`.
       
     alphas: numpy array
