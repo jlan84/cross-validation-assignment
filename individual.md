@@ -129,20 +129,25 @@ In K-fold cross validation, we'll split our training set into **k** groups, usua
 
 2. Use the code you just wrote to compute the k-fold cross validation score on the training set. (use k=5 and train a LinearRegression model on the Boston data). How does this compare to the RMSE score you just computed for your **test set** from Part 2?
 
-3. To get a feel for how the size of the training set affects performance, do k-fold cross validation where you limit the training set size by varying amounts. Plot the learning curve (MSE in this case) across varying training set sizes. (You might want to use: [cross_val_score](http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.cross_val_score.html) which is scikit-learn's built-in function for K-fold cross validation.)
+3. To get a feel for how the size of the training set affects performance, do k-fold cross validation where you limit the training set size by varying amounts. Plot the learning curve (MSE in this case) across varying training set sizes. (You might want to use: [cross_val_score](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html) which is scikit-learn's built-in function for K-fold cross validation.)
 
 
 ## Part 4: Stepwise Regression (Extra Credit)
 
 While stepwise regression has its many [critics](http://andrewgelman.com/2014/06/02/hate-stepwise-regression/), it is a useful exercise to introduce the concept of feature selection in the context of linear regression. This extra credit exercise has two components of varying difficulties. First, use the `scikit-learn` reverse feature elimination (a greedy feature elimination algorithm) to implement something similar to sequential backward selection. The second, more difficult part is implementing sequential forward selection.
 
-1. Generate a series of of `n=5000` samples, `n=100` features, with a `random_seed=0` using the `make_friedman1` dataset like so:
+1. Generate a series of of `n=5000` samples, `n=100` features, with a `random_seed=0` using the `make_friedman1` dataset [like so](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html):
+
+    ```python
+    from sklearn.datasets import make_friedman1
+    X_fri, y_fri = make_friedman1(n_samples=5000, n_features=100, random_state=0)
+    ```
+
+2. Now, create a `LinearRegression()` object and pass it into the [RFE](http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html) selection algorithm.
 
     ```python
     from sklearn.feature_selection import RFE
     ```
-
-2. Now, create a `LinearRegression()` object and pass it into the [RFE](http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html) selection algorithm.
 
 3. Using a `for` loop, generate a series of models that take the top `n` features and calculate the `R^2` score using the `.score()` method.
 
