@@ -3,8 +3,8 @@ from sklearn.preprocessing import StandardScaler
 
 
 class XyScaler(BaseEstimator, TransformerMixin):
-    """Standardize a training set of data along with a vector of targets.  """
-    
+    """Standardize a training set of data along with a vector of targets."""
+
     def __init__(self):
         self.X_scaler = StandardScaler()
         self.y_scaler = StandardScaler()
@@ -19,3 +19,9 @@ class XyScaler(BaseEstimator, TransformerMixin):
         """Transform a new set of data and target vector."""
         return (self.X_scaler.transform(X),
                 self.y_scaler.transform(y.reshape(-1, 1)).flatten())
+
+    def inverse_transform(self, X, y, *args, **kwargs):
+        """Tranform from a scaled representation back to the original scale."""
+        return (self.X_scaler.inverse_transform(X),
+                self.y_scaler.inverse_transform(y.reshape(-1, 1)).flatten())
+
