@@ -48,6 +48,8 @@ for idx, (train, test) in enumerate(kf.split(X_train)):
 
 To make the task of standardizing both the predictor and response more seamless, we have provided an `XyScaler` class in `utils.py`.
 
+**Nota bene**: why standardize the response variable `y`? Normally we would leave `y` as it is, but due to a limitation of sklearn, this is the only way to ensure that the intercept term does not get regularized. For more discussion on why to leave the intercept term unregularized, see [here](https://stats.stackexchange.com/a/161689)
+
 4. Wrap your cross validation code from above into a function:
 
 ```python
