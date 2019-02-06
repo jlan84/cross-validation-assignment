@@ -96,8 +96,8 @@ The reason this option is considered a poor chioce is two-fold: 1) High Variance
    test_predicted = linear.predict(X_test)
 
    # Calculate RMSE for training and test set
-   print 'RMSE for training set ', rmse()
-   print 'RMSE for test set ', rmse()
+   print( 'RMSE for training set ', rmse() )
+   print( 'RMSE for test set ', rmse() )
    ```
 4. Which RMSE did you expect to be higher?
 
@@ -115,7 +115,7 @@ In K-fold cross validation, we'll split our training set into **k** groups, usua
 
 <br>
 
-1. Create the function `crossVal(X_train, y_train)` using K-fold validation **on the training dataset**. `sklearn` has its own implementation of K-fold (`sklearn.cross_validation.cross_val_score()`). However, to ensure you have an understanding of K-fold, you will implement it here. Your own implementation should:
+1. Create the function `crossVal(X_train, y_train, k)` using K-fold validation **on the training dataset**. `sklearn` has its own implementation of K-fold (`sklearn.cross_validation.cross_val_score()`). However, to develop your understanding of K-fold, you will implement it here. Your own implementation should:
 
   1. Randomly split the dataset into **k** folds.  You may use sklearn's `KFold` class if you'd like.
 
