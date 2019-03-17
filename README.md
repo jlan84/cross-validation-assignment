@@ -1,4 +1,5 @@
-Cross Validation and Regularized Regression
+Cross Validation
 ===========================================
 
-Morning exercise in [individual.md](individual.md) and afternoon in [pair.md](pair.md).
+Half-day assignment on cross-validation.
+
