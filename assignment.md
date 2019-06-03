@@ -3,12 +3,12 @@ The goal of any model building process is to increase the predictive performance
 
 Since we normally only have access to a fixed data set, it's common to split the original data set into two portions named a **train** and **test** set - of which we'll use the test portion to simulate 'unseen data.'
 
-How we deal with the **train** portion of the original data set will be the focus of this mornings sprint. Below are four different ways to build upon the complexity of our training strategy to produce the best process for trianing and validating our models.
+How we deal with the **train** portion of the original data set will be the focus of this mornings sprint. Below are four different ways to build upon the complexity of our training strategy to produce the best process for training and validating our models.
 
-- **Worst Option** - Train model with original data set without spliting into train and test set. Unable to score our model and determine its predictive performance since we don't have test set.
+- **Worst Option** - Train model with original data set without splitting into train and test set. Unable to score our model and determine its predictive performance since we don't have test set.
 - **Bad Option** - Only perform a train-test split. Train model with entire training set and score against test set.
 - **Better Option** - Further split training set into **one** smaller training set and **one** validation set. Use validation set score to guide our model choice and then score best model against test set. *Below is an image of this option.*
-- **Even Better Option** - Cross validate training set by spliting into **many** training sets and **many** validation sets. Rotate through each portion to build and validate model and average results. Best model is used to score against test set.
+- **Even Better Option** - Cross validate training set by splitting into **many** training sets and **many** validation sets. Rotate through each portion to build and validate model and average results. Best model is used to score against test set.
 
 <div align="center">
     <img height="400" src="images/onecross_val.png">
@@ -26,7 +26,7 @@ How we deal with the **train** portion of the original data set will be the focu
 1. Include the following lines to import the libraries needed:
 
    ```python
-   from sklearn.linear_model import LinearRegression
+   from sklearn.neighbors import KNeighborsRegressor
    from sklearn.model_selection import KFold
    from sklearn.model_selection import train_test_split
    from sklearn.model_selection import cross_val_score
@@ -79,21 +79,18 @@ The reason this option is considered a poor chioce is two-fold: 1) High Variance
    the RMSE. You should use `sklearn.metrics.mean_squared_error()` to confirm your
    results.
 
-3. Use `LinearRegression()` in scikit-learn to build a model with your training data.
+3. Use `KNeighborsRegressor()` in scikit-learn to build a model with your training data.
 
-   Note that there is multicollinearity and other issues in the data.  Do not worry
-   about this for now. We will learn about Lasso and Ridge regularization this
-   afternoon (alternative to the methods you have learned yesterday) to
-   deal with some of the issues.
+   Note that this is a complicated dataset with a good deal of correlation.  You might consider
 
    ```python
    # Fit your model using the training set
-   linear = LinearRegression()
-   linear.fit(X_train, y_train)
+   reg = KNeighborsRegressor()
+   reg.fit(X_train, y_train)
 
    # Call predict to get the predicted values for training and test set
-   train_predicted = linear.predict(X_train)
-   test_predicted = linear.predict(X_test)
+   train_predicted = reg.predict(X_train)
+   test_predicted = reg.predict(X_test)
 
    # Calculate RMSE for training and test set
    print( 'RMSE for training set ', rmse() )
@@ -134,7 +131,7 @@ In K-fold cross validation, we'll split our training set into **k** groups, usua
 
 ## Part 4: Stepwise Regression (Extra Credit)
 
-While stepwise regression has its many [critics](http://andrewgelman.com/2014/06/02/hate-stepwise-regression/), it is a useful exercise to introduce the concept of feature selection in the context of linear regression. This extra credit exercise has two components of varying difficulties. First, use the `scikit-learn` reverse feature elimination (a greedy feature elimination algorithm) to implement something similar to sequential backward selection. The second, more difficult part is implementing sequential forward selection.
+While stepwise regression has its many [critics](http://andrewgelman.com/2014/06/02/hate-stepwise-regression/), it is a useful exercise to introduce the concept of feature selection in the context of regression. It is typically thought of in the context of linear regression, but can be useful with KNN to combat the curse of dimensionality.
 
 1. Generate a series of of `n=5000` samples, `n=100` features, with a `random_seed=0` using the `make_friedman1` dataset [like so](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html):
 
@@ -143,7 +140,7 @@ While stepwise regression has its many [critics](http://andrewgelman.com/2014/06
     X_fri, y_fri = make_friedman1(n_samples=5000, n_features=100, random_state=0)
     ```
 
-2. Now, create a `LinearRegression()` object and pass it into the [RFE](http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html) selection algorithm.
+2. Now, create a `KNeighborsRegressor()` object and pass it into the [RFE](http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html) selection algorithm.
 
     ```python
     from sklearn.feature_selection import RFE
@@ -153,7 +150,7 @@ While stepwise regression has its many [critics](http://andrewgelman.com/2014/06
 
 4. Plot the *Adjusted* `R^2` as a function of the number of included features. What does this plot tell you about the number of useful features in your model?
 
-5. Instead of using RFE to do backward selection, create your own `LinearRegression` class that implements sequential forward selection, which involves starting with no variables in the model, testing the addition of each variable using a chosen model comparison criterion, adding the variable (if any) that improves the model the most, and repeating this process until none improves the model.
+5. Instead of using RFE to do backward selection, create your own `KNeighborsRegressor` class that implements sequential forward selection, which involves starting with no variables in the model, testing the addition of each variable using a chosen model comparison criterion, adding the variable (if any) that improves the model the most, and repeating this process until none improves the model.
 
 #### Reference
 
