@@ -140,18 +140,26 @@ While stepwise regression has its many [critics](http://andrewgelman.com/2014/06
     X_fri, y_fri = make_friedman1(n_samples=5000, n_features=100, random_state=0)
     ```
 
-2. Now, create a `KNeighborsRegressor()` object and pass it into the [RFE](http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html) selection algorithm.
+<b>N.B.</b> - We're going to be doing a brute force search in the next few steps.  You might want to start with a set with only 10 features, tune your code, then circle back to having the fully robust set.
 
-    ```python
-    from sklearn.feature_selection import RFE
-    ```
+2. We're going to implement a brute force approach to Recursive Feature elimination.  When we cover linear regression, we can discuss more effective ways than the approach we will try right now.  To implement this approach, we're going to write a function ```Eliminate_One``` (see the below doc string for parameter definitions).  The function is going to try *every* subset of the original feature set that is of size n-1.  For example if I'm passing in the array ```[1, 4, 6]``` into the function, I'm indicating that the previous step identified columns 1, 4, and 6 as the best possible combination of three features.  I should then try to fit and evaluate a model with combinations of ```[1,4], [1,6], [4,6]```.
 
-3. Using a `for` loop, generate a series of models that take the top `n` features and calculate the `R^2` score using the `.score()` method.
+```python
+def Eliminate_One(reg, X, y, included_features):
+    '''
+    Eliminate One
+    For a provided regressor, evaluate the ideal subset of n-1 features to try from 
+    a provided list of n features.  This function can be called itterative to perform
+    recursive feature elimination for a general regression model (not leveraging feature
+    importances).
+    
+    Inputs - 
+    * reg = a regression model matching the sklearn mechanics
+    * X, y = numpy arrays for the features and targets
+    * included_features = numpy array indicating the column indexes to subset from
+    '''
+```
+
+3. Using a `for` loop, generate a series of models that take the top `n` features and calculate the `R^2` score using the `.score()` method. 
 
 4. Plot the *Adjusted* `R^2` as a function of the number of included features. What does this plot tell you about the number of useful features in your model?
-
-5. Instead of using RFE to do backward selection, create your own `KNeighborsRegressor` class that implements sequential forward selection, which involves starting with no variables in the model, testing the addition of each variable using a chosen model comparison criterion, adding the variable (if any) that improves the model the most, and repeating this process until none improves the model.
-
-#### Reference
-
-* [Stepwise Regression Procedure](https://onlinecourses.science.psu.edu/stat501/node/329)
