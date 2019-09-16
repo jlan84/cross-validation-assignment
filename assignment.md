@@ -124,7 +124,7 @@ In K-fold cross validation, we'll split our training set into **k** groups, usua
 
   3. Average the **k** results of your error metric. Return the average error metric.
 
-2. Use the code you just wrote to compute the k-fold cross validation score on the training set. (use k=5 and train a LinearRegression model on the Boston data). How does this compare to the RMSE score you just computed for your **test set** from Part 2?
+2. Use the code you just wrote to compute the k-fold cross validation score on the training set. (use k=5 and train a KNN Regression model on the Boston data). How does this compare to the RMSE score you just computed for your **test set** from Part 2?
 
 3. To get a feel for how the size of the training set affects performance, do k-fold cross validation where you limit the training set size by varying amounts. Plot the learning curve (MSE in this case) across varying training set sizes. (You might want to use: [cross_val_score](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html) which is scikit-learn's built-in function for K-fold cross validation.)
 
