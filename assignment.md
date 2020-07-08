@@ -1,5 +1,7 @@
+## Cross Validation
+
 ## Introduction
-The goal of any model building process is to increase the predictive performance of a statistical model. Today you'll learn the difference between a training set, test set, validation set and a process known as cross-validation - and ultimately how these varying methods have a direct effect on your models predictive performance on unseen data.
+The goal of any model-building process is to increase the predictive performance of a statistical model. Today you'll learn the difference between a training set, test set, validation set and a process known as cross-validation - and ultimately how these varying methods have a direct effect on your models predictive performance on unseen data.
 
 Since we normally only have access to a fixed data set, it's common to split the original data set into two portions named a **train** and **test** set - of which we'll use the test portion to simulate 'unseen data.'
 
@@ -18,9 +20,9 @@ How we deal with the **train** portion of the original data set will be the focu
 - **Validation Set** - Used to tune hyperparameters of different models and choose the best performing model.
 - **Test Set** - Used to test the predictive performance of the best scoring model.
 
+## Basic
 
-## Part 1: Load and Split Data
-
+### Part 1: Load and Split Data
 **Note: Put your code in `cross_val.py` for submission.**
 
 1. Include the following lines to import the libraries needed:
@@ -69,8 +71,7 @@ How we deal with the **train** portion of the original data set will be the focu
    ```
 
 
-## Part 2: Train and Test Split Only (Bad Option)
-
+### Part 2: Train and Test Split Only (Bad Option)
 The reason this option is considered a poor chioce is two-fold: 1) High Variance - The split into a train and test set could randomly be such that the training set is not representative of the test set. This could mean our estimate of the performance of our model is wrong because the test set is unlike other data we will see. 2) No validation set for model tuning -- If we want to iterate on our model (for hyper-parameter optimization, or variable selection) on the basis of its test-set performance we can use the test set for this purpose, but without a validation set, we can't get an estimate of how our model will perform on truly unseen data, because the model has been able to "see" the test set. As a result estimates of the performance of the model are likely to be _optimistic_ when calculated based on training data for which the model has been selected to perform as well as possible.
 
 1. Since we already split the original data set on Part 1, we'll train our model on the training set only. 
@@ -101,9 +102,9 @@ The reason this option is considered a poor chioce is two-fold: 1) High Variance
 5. Explain the value of evaluating RMSE on a separate test set (instead of fitting a
    model and calculating RMSE on the entire data set).
 
+## Advanced
 
-## Part 3: K-fold Cross Validation (Even Better Option)
-
+### Part 3: K-fold Cross Validation (Even Better Option)
 In K-fold cross validation, we'll split our training set into **k** groups, usually 5 or 10. One of the k groups will act as our validation set, the rest of the (**k-1**) groups will be the training set. We'll iterate through each combination until each **fold** has had a chance to act as our validation set. At each iteration, a metric for accuracy (RMSE in this case) will be calculated and an average score will be calculated across the k iterations.
 
 <div align="center">
@@ -129,8 +130,9 @@ In K-fold cross validation, we'll split our training set into **k** groups, usua
 3. To get a feel for how the size of the training set affects performance, do k-fold cross validation where you limit the training set size by varying amounts. Plot the learning curve (MSE in this case) across varying training set sizes. (You might want to use: [cross_val_score](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html) which is scikit-learn's built-in function for K-fold cross validation.)
 
 
-## Part 4: Stepwise Regression (Extra Credit)
+## Extra Credit
 
+### Part 4: Stepwise Regression
 While stepwise regression has its many [critics](http://andrewgelman.com/2014/06/02/hate-stepwise-regression/), it is a useful exercise to introduce the concept of feature selection in the context of regression. It is typically thought of in the context of linear regression, but can be useful with KNN to combat the curse of dimensionality.
 
 1. Generate a series of of `n=5000` samples, `n=100` features, with a `random_seed=0` using the `make_friedman1` dataset [like so](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html):
