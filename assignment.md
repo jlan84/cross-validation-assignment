@@ -115,15 +115,15 @@ In K-fold cross validation, we'll split our training set into **k** groups, usua
 
 1. Create the function `crossVal(X_train, y_train, k)` using K-fold validation **on the training dataset**. `sklearn` has its own implementation of K-fold (`sklearn.cross_validation.cross_val_score()`). However, to develop your understanding of K-fold, you will implement it here. Your own implementation should:
 
-  1. Randomly split the dataset into **k** folds.  You may use sklearn's `KFold` class if you'd like.
+   A) Randomly split the dataset into **k** folds.  You may use sklearn's `KFold` class if you'd like.
 
-  2. For each fold:
+   B) For each fold:
     1. train the model with the (k-1) _other_ folds,
     2. use the trained model to predict the target values of each example in the current fold,
     3. calculate the RMSE of the current fold's predicted values,
     4. store the RMSE for this fold.
 
-  3. Average the **k** results of your error metric. Return the average error metric.
+   C) Average the **k** results of your error metric. Return the average error metric.
 
 2. Use the code you just wrote to compute the k-fold cross validation score on the training set. (use k=5 and train a KNN Regression model on the Boston data). How does this compare to the RMSE score you just computed for your **test set** from Part 2?
 
